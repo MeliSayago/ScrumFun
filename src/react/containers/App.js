@@ -1,32 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchUsers } from '../action-creators/user';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react';
+import RouteHook from 'react-route-hook';
+//import store from '../store';
+import { Switch } from 'react-router-dom';
 
-class App extends React.Component {
-  componentWillMount() {
-    this.props.fetchUsers();
-  }
+import RegisterUserContainer from './RegisterUserContainer';
 
+export default class App extends Component {
   render() {
     return (
-      <div>
-        <h1>{this.props.users}</h1>
+      <div className="App">
+        <main role="main" className="container-fluid">
+          <Switch>
+            <RouteHook
+              path="/home"
+              component={RegisterUserContainer}
+              //onEnter={onUserProfileEnter}
+            />
+          </Switch>
+        </main>
       </div>
     );
   }
 }
-
-const mapStateToProps = state => ({
-  users: state.userReducer.users,
-});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      fetchUsers,
-    },
-    dispatch,
-  );
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);

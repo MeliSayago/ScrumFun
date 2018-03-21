@@ -8,3 +8,5 @@ export const fetchUsers = () => dispatch =>
       users: snapshot.val(),
     });
   });
+
+//exports const loginUser=()=> dispatch
