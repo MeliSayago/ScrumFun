@@ -18,6 +18,10 @@ export default ({ onChange, state, onSubmit }) => {
           required
           onChange={onChange}
         />
+        <select value={state.rol} onChange={onChange} name="rol">
+          <option>Developer</option>
+          <option>Scrum Master</option>
+        </select>
         <button
           className="btn btn-lg btn-primary btn-block"
           type="submit"
