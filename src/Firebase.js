@@ -10,6 +10,7 @@ const config = {
   projectId: 'testproject-b9f8d',
   storageBucket: '',
   messagingSenderId: '1055563143247',
+  userProfile: 'users',
 };
 
 firebase.initializeApp(config);
