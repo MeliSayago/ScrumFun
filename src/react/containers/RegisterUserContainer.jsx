@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import RegisterUser from '../components/RegisterUser';
-import * as firebase from 'firebase';
+import { firebaseConnect, withFirebase } from 'react-redux-firebase';
 
 class RegisterUserContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      rol: '',
+      rol: 'develop',
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,8 +21,7 @@ class RegisterUserContainer extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    //aca deberia agregar a la db el user
+    this.props.firebase.push('users', this.state);
   }
 
   render() {
@@ -35,5 +34,4 @@ class RegisterUserContainer extends Component {
     );
   }
 }
-
-export default RegisterUserContainer;
+export default withFirebase(RegisterUserContainer);
