@@ -5,12 +5,26 @@ import CreateSesion from '../components/CreateSesion'
 export default class CreateSesionContainer extends React.Component {
     constructor(props){
         super(props);
-
+        this.state = {
+            boardName : "",
+            scale : ""
+        }
+        this.onChange = this.onChange.bind(this);
     }
 
+    onChange(e){
+        e.preventDefault()
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+   
     render(){
+        console.log(this.state)
         return (
-            <CreateSesion/>
+            <CreateSesion
+            onChange={this.onChange}
+            />
         )
     }
 }
