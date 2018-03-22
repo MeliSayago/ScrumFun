@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-import userReducer from './userReducer';
-import {reducer as formReducer} from 'redux-form'
+import { firebaseReducer } from 'react-redux-firebase';
 
-export default combineReducers ({
-    form: formReducer,
-    userReducer,
-  });
+// Add firebase to reducers
+export const rootReducer = combineReducers({
+  firebase: firebaseReducer,
+});

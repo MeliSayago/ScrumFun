@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RegisterUser from '../components/RegisterUser';
+import * as firebase from 'firebase';
 
 class RegisterUserContainer extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class RegisterUserContainer extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    //const data = Object.assign({}, this.state); la data va a ser lo que quiera adherir a la db
+    const user = Object.assign({}, this.state);
     //aca deberia agregar a la db el user
   }
 
