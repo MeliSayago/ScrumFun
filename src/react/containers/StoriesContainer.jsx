@@ -1,27 +1,24 @@
 import React from 'react'
 import Stories from '../components/Stories'
+import { firebaseConnect, withFirebase } from 'react-redux-firebase'
 
-export default class StoriesContainer extends React.Component {
+class StoriesContainer extends React.Component {
     constructor(props){
         super(props);
-        this.state={
-            storyName:"",
-        }
-        this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e){
+    handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        this.props.firebase.push('stories',{[e.target[0].name]:e.target[0].value})
+        e.target.reset();
     }
 
     render(){
-        console.log(this.state)
         return(
-            <Stories onChange={this.onChange}/>
+            <Stories handleSubmit={this.handleSubmit}/>
         )
     }
 
-} 
+}
+
+export default withFirebase(StoriesContainer)

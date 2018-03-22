@@ -1,20 +1,19 @@
 import React from 'react'
 import {FormControl,FormGroup} from 'react-bootstrap'
 
-export default ({onChange}) => (
+export default ({handleSubmit}) => (
     <div>
-        <form>
-            <FormGroup>
+        <form onSubmit={handleSubmit}>
+            <FormGroup >
                 <FormControl
-                onChange={onChange}
                 id="formControlsText"
                 type="text"
                 name="storyName"
                 label="newStory"
                 placeholder="Story Name"
                 />
+            <button>Submit</button>
             </FormGroup>        
-        <button >Submit</button>
         </form>
         
     </div>
