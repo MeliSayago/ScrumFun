@@ -2,7 +2,7 @@ import { RECEIVE_USERS } from '../constans'
 
 const initialState = {
     users: '',
-  }
+}
   
 
 export default (state=initialState, action) =>{
