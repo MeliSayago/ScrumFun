@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './react/containers/App';
-import CreateSessionContainer from './react/containers/CreateSessionContainer';
 import { store } from './Firebase';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
