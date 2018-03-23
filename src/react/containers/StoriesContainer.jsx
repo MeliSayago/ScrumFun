@@ -1,33 +1,39 @@
 import React from 'react';
 import Stories from '../components/Stories';
 import { firebaseConnect, withFirebase } from 'react-redux-firebase';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 class StoriesContainer extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.state = {};
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.firebase.push('board/-L8Eqq3Ownr-_66t4DSK', {
+    this.props.firebase.push('stories', {
       [e.target[0].name]: e.target[0].value,
     });
     e.target.reset();
   };
 
   render() {
-    console.log('holiiiiia', this.props.board);
-    return <Stories handleSubmit={this.handleSubmit} />;
+    console.log(this.props.stories);
+    return (
+      <Stories
+        stories={Object.values(this.props.stories)}
+        handleSubmit={this.handleSubmit}
+      />
+    );
   }
 }
 
 export default compose(
   firebaseConnect(props => [
-    { path: 'board' }, // string equivalent 'todos'
+    { path: 'stories' }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
-    board: state.firebase.data.board,
+    stories: state.firebase.data.stories || {},
   })),
 )(StoriesContainer);

@@ -1,8 +1,8 @@
 import React from 'react';
-import CreateSesion from '../components/CreateSesion';
+import CreateSession from '../components/CreateSession';
 import { firebaseConnect, withFirebase } from 'react-redux-firebase';
 
-class CreateSesionContainer extends React.Component {
+class CreateSessionContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,8 +27,8 @@ class CreateSesionContainer extends React.Component {
   }
 
   render() {
-    return <CreateSesion onChange={this.onChange} onSubmit={this.onSubmit} />;
+    return <CreateSession onChange={this.onChange} onSubmit={this.onSubmit} />;
   }
 }
 
-export default withFirebase(CreateSesionContainer);
+export default withFirebase(CreateSessionContainer);

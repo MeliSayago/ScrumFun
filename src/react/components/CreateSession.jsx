@@ -17,7 +17,7 @@ export default ({ onChange, onSubmit }) => (
     <form onSubmit={onSubmit}>
       <FormGroup>
         <ControlLabel>
-          <h1>Create Sesion</h1>
+          <h1>Create Session</h1>
         </ControlLabel>
         <FormControl
           type="text"
