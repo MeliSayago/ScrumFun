@@ -1,8 +1,9 @@
 import React from 'react'
-import {FormControl,FormGroup} from 'react-bootstrap'
+import {FormControl,FormGroup,ListGroupItem,ListGroup} from 'react-bootstrap'
 
-export default ({handleSubmit}) => (
+export default ({handleSubmit, stories}) => (
     <div>
+        {console.log(stories)}
         <form onSubmit={handleSubmit}>
             <FormGroup >
                 <FormControl
@@ -15,6 +16,15 @@ export default ({handleSubmit}) => (
             <button>Submit</button>
             </FormGroup>        
         </form>
-        
+        <div>
+            <ListGroup>
+            {stories.map((story,index) => (
+                <ListGroupItem key={index}>
+                {story.storyName}
+                </ListGroupItem>
+            ))}   
+            </ListGroup>
+                
+        </div>
     </div>
 )
