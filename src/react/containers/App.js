@@ -13,14 +13,13 @@ export default class App extends Component {
       <div className="App">
         <main role="main" className="container-fluid">
           <Switch>
-            <RouteHook path="/home" component={RegisterUserContainer} />
             <RouteHook
               path="/createsession"
               component={CreateSesionContainer}
             />
             <RouteHook path="/game" component={StoriesContainer} />
-            <RouteHook path="/home" component={RegisterUserContainer} />
-            <Redirect from="/" to="/home" />
+            <RouteHook path="/register" component={RegisterUserContainer} />
+            <Redirect from="/" to="/createsession" />
           </Switch>
         </main>
       </div>
