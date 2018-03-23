@@ -22,6 +22,10 @@ class RegisterUserContainer extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.props.firebase.push('users', this.state);
+    this.props.firebase
+      .auth()
+      .signInAnonymously()
+      .then(() => this.props.history.push('/createsession'));
   }
 
   render() {

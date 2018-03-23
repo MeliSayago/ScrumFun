@@ -25,7 +25,7 @@ export default ({ onChange, state, onSubmit }) => {
         <button
           className="btn btn-lg btn-primary btn-block"
           type="submit"
-          //disabled={!state.validForm}  desabilitar el boton si no se ingresa nada en el input name
+          disabled={!state}
         >
           Register
         </button>
