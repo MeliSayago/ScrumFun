@@ -25,7 +25,7 @@ class RegisterUserContainer extends Component {
     this.props.firebase
       .auth()
       .signInAnonymously()
-      .then(() => this.props.history.push('/createsession'));
+      .then(() => this.props.history.push('/game'));
   }
 
   render() {
