@@ -1,8 +1,8 @@
 import React from 'react'
-import CreateSesion from '../components/CreateSesion'
+import CreateSession from '../components/CreateSession'
 
 
-export default class CreateSesionContainer extends React.Component {
+export default class CreateSessionContainer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -22,7 +22,7 @@ export default class CreateSesionContainer extends React.Component {
     render(){
         console.log(this.state)
         return (
-            <CreateSesion
+            <CreateSession
             onChange={this.onChange}
             />
         )

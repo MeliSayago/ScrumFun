@@ -4,7 +4,7 @@ import RouteHook from 'react-route-hook';
 import { Redirect, Switch } from 'react-router-dom';
 
 import RegisterUserContainer from './RegisterUserContainer';
-import CreateSesionContainer from './CreateSesionContainer';
+import CreateSessionContainer from './CreateSessionContainer';
 import StoriesContainer from './StoriesContainer';
 
 export default class App extends Component {
@@ -19,8 +19,8 @@ export default class App extends Component {
               //onEnter={onUserProfileEnter}
             />
             <RouteHook
-              path="/createsesion"
-              component={CreateSesionContainer}
+              path="/createSession"
+              component={CreateSessionContainer}
             />
             <RouteHook
               path="/game"

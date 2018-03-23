@@ -1,10 +1,14 @@
 import React from 'react'
 import Stories from '../components/Stories'
 import { firebaseConnect, withFirebase } from 'react-redux-firebase'
+import {connect} from 'react-redux'
+import { compose } from 'redux'
 
 class StoriesContainer extends React.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
+        this.state = {
+        }
     }
 
     handleSubmit = (e) => {
@@ -14,11 +18,18 @@ class StoriesContainer extends React.Component {
     }
 
     render(){
+        console.log(this.props.stories)
         return(
-            <Stories handleSubmit={this.handleSubmit}/>
+            <Stories stories={Object.values(this.props.stories)} handleSubmit={this.handleSubmit}/>
         )
     }
-
 }
 
-export default withFirebase(StoriesContainer)
+export default compose(
+    firebaseConnect((props) => [
+      { path: 'stories' } // string equivalent 'todos'
+    ]),
+    connect((state, props) => ({
+      stories: state.firebase.data.stories || {}
+    }))
+  )(StoriesContainer)

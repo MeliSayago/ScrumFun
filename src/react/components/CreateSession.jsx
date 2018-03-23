@@ -6,7 +6,7 @@ export default ({onChange}) => (
     <div className="container">
         <form>
             <FormGroup>
-            <ControlLabel><h1>Create Sesion</h1></ControlLabel>
+            <ControlLabel><h1>Create Session</h1></ControlLabel>
             <FormControl
                 type="text"
                 onChange={onChange}
