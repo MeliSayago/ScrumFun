@@ -1,7 +1,8 @@
 import React from 'react';
 import CreateSesion from '../components/CreateSesion';
+import { firebaseConnect, withFirebase } from 'react-redux-firebase';
 
-export default class CreateSesionContainer extends React.Component {
+class CreateSesionContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,6 +10,7 @@ export default class CreateSesionContainer extends React.Component {
       scale: '',
     };
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
@@ -18,7 +20,15 @@ export default class CreateSesionContainer extends React.Component {
     });
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.firebase.push('board', this.state);
+    this.props.history.push('/register');
+  }
+
   render() {
-    return <CreateSesion onChange={this.onChange} />;
+    return <CreateSesion onChange={this.onChange} onSubmit={this.onSubmit} />;
   }
 }
+
+export default withFirebase(CreateSesionContainer);
