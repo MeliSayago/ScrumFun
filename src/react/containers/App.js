@@ -20,7 +20,11 @@ export default class App extends Component {
               path="/createsession"
               component={CreateSessionContainer}
             />
-            <RouteHook exact path="/:boardname" component={StoriesContainer} />
+            <RouteHook 
+              exact 
+              path="/:boardname" 
+              component={StoriesContainer} 
+            />
             <RouteHook 
               path="/:boardname/cards" 
               component={CardsContainer} />
@@ -28,11 +32,6 @@ export default class App extends Component {
               path="/:boardname/register"
               component={RegisterUserContainer}
               />
-            <RouteHook
-              exact
-              path="/cards" 
-              component={CardsContainer}
-            />
             <RouteHook
               path="/:boardName/sidebar"
               component={SidebarUsersContainer}
