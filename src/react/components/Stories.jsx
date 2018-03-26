@@ -1,9 +1,9 @@
 import React from 'react'
-import {FormControl,FormGroup,ListGroupItem,ListGroup} from 'react-bootstrap'
+import {FormControl,FormGroup,ListGroupItem,ListGroup,Button} from 'react-bootstrap'
 
-export default ({handleSubmit, stories}) => (
+export default ({handleClick, handleSubmit, stories}) => (
     <div>
-        {console.log(stories)}
+        {console.log("stories",stories)}
         <form onSubmit={handleSubmit}>
             <FormGroup >
                 <FormControl
@@ -21,6 +21,7 @@ export default ({handleSubmit, stories}) => (
             {stories.map((story,index) => (
                 <ListGroupItem key={index}>
                 {story.storyName}
+                <Button onClick={handleClick} value={story.storyName} bsStyle="danger">Delete</Button>
                 </ListGroupItem>
             ))}   
             </ListGroup>

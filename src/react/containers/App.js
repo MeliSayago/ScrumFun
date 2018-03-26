@@ -7,6 +7,8 @@ import RegisterUserContainer from './RegisterUserContainer';
 import CreateSessionContainer from './CreateSessionContainer';
 import StoriesContainer from './StoriesContainer';
 
+import StoriesList from '../components/StoriesList'
+
 export default class App extends Component {
   render() {
     return (
@@ -14,24 +16,21 @@ export default class App extends Component {
         <main role="main" className="container-fluid">
           <Switch>
             <RouteHook 
-              path="/home" 
-              component={RegisterUserContainer} 
+              path="/createsession" 
+              component={CreateSessionContainer} 
             />
             <RouteHook
-              path="/createsession"
-              component={CreateSesionContainer}
+              exact
+              path="/:boardname/register"
+              component={RegisterUserContainer}
             />
             <RouteHook 
-              path="/game" 
+              path="/:boardname" 
               component={StoriesContainer} 
-            />
-            <RouteHook 
-              path="/home" 
-              component={RegisterUserContainer} 
             />
             <Redirect 
               from="/" 
-              to="/home" 
+              to="/createsession" 
             />
           </Switch>
         </main>
