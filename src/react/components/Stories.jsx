@@ -3,7 +3,6 @@ import {FormControl,FormGroup,ListGroupItem,ListGroup,Button} from 'react-bootst
 
 export default ({handleClick, handleSubmit, stories}) => (
     <div>
-        {console.log("stories",stories)}
         <form onSubmit={handleSubmit}>
             <FormGroup >
                 <FormControl
@@ -21,7 +20,7 @@ export default ({handleClick, handleSubmit, stories}) => (
             {stories.map((story,index) => (
                 <ListGroupItem key={index}>
                 {story.storyName}
-                <Button onClick={handleClick} value={story.storyName} bsStyle="danger">Delete</Button>
+                <Button onClick={handleClick} id={story.id} value={story.storyName} bsStyle="danger">Delete</Button>
                 </ListGroupItem>
             ))}   
             </ListGroup>

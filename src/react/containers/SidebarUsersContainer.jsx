@@ -11,8 +11,14 @@ class SidebarUsersContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props.board.users);
-    return <SidebarUsers board={Object.values(this.props.board)} />;
+    const usersList = this.props.board.users
+      ? Object.keys(this.props.board.users).map(userId => ({
+          ...this.props.board.users[userId],
+          id: userId,
+        }))
+      : [];
+
+    return <SidebarUsers users={usersList} />;
   }
 }
 
