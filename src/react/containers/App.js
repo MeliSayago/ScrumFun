@@ -4,8 +4,9 @@ import RouteHook from 'react-route-hook';
 import { Redirect, Switch } from 'react-router-dom';
 
 import RegisterUserContainer from './RegisterUserContainer';
-import CreateSessionContainer from './CreateSessionContainer';
+import CreateSessionContainer from './CreateSesionContainer';
 import StoriesContainer from './StoriesContainer';
+import CardsContainer from './CardsContainers';
 
 import StoriesList from '../components/StoriesList'
 
