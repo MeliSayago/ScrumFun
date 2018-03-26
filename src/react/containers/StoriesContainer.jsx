@@ -15,7 +15,7 @@ class StoriesContainer extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const boardName = this.props.match.params.boardname
+    const boardName = this.props.match.params.boardname;
     this.props.firebase.push(`${boardName}/stories`, {
       [e.target[0].name]: e.target[0].value,
     });
@@ -23,9 +23,9 @@ class StoriesContainer extends React.Component {
   };
 
   handleClick = e => {
-    const boardName = this.props.match.params.boardname
-    this.props.firebase.remove(`${boardName}/stories/${e.target.id}`)
-  }
+    const boardName = this.props.match.params.boardname;
+    this.props.firebase.remove(`${boardName}/stories/${e.target.id}`);
+  };
 
   buttonClick = e => {
     if(this.state.show===false){

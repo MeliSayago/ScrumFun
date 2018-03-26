@@ -24,9 +24,8 @@ class CreateSessionContainer extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    // this.props.firebase.push('board', this.state).then((r) => 
-    this.props.history.push(`/${this.state.boardName}/register`)
-    // );
+    //this.props.firebase.push('board', this.state);
+    this.props.history.push(`/${this.state.boardName}/register`);
   }
 
   render() {
