@@ -19,26 +19,21 @@ class StoriesContainer extends React.Component {
     e.target.reset();
   };
 
-  handleClick = e => {
-    console.log("board",this.props.board.stories)
-    const board = Object.values(this.props.board.stories)
-    console.log("value", e.target.value)
-    board.map(data => {
-        if(data.storyName == e.target.value){
-            
-            console.log(data)
-        }
-    })
-    const boardName = this.props.match.params.boardname
+  
 
-    this.props.firebase.remove(`${boardName}/stories/storyName/${e.target.value}`)
+  handleClick = e => {
+    const boardName = this.props.match.params.boardname
+    this.props.firebase.remove(`${boardName}/stories/${e.target.id}`)
   }
 
   render() {
+
+    const storiesList = this.props.board.stories ? Object.keys(this.props.board.stories).map(storyId => ({...this.props.board.stories[storyId], id: storyId})) : []
+
     return (
       <Stories
         handleClick={this.handleClick}
-        stories={Object.values(this.props.board.stories || [])}
+        stories={storiesList}
         handleSubmit={this.handleSubmit}
       />
     );

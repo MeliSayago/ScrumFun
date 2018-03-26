@@ -6,7 +6,7 @@ class CardsContainer extends React.Component {
 render(){
     return(
         <div className="xop-caption">
-            <ul class="xop-grid">
+            <ul className="xop-grid">
                 <li>
                     <div className='xop-box xop-img'>
                         <h1>0</h1>
