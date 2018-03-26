@@ -18,7 +18,7 @@ class SidebarUsersContainer extends React.Component {
         }))
       : [];
 
-    return <SidebarUsers users={usersList} />;
+    return <SidebarUsers users={usersList} state={this.state} />;
   }
 }
 
