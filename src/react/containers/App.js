@@ -4,11 +4,10 @@ import RouteHook from 'react-route-hook';
 import { Redirect, Switch } from 'react-router-dom';
 
 import RegisterUserContainer from './RegisterUserContainer';
-import CreateSessionContainer from './CreateSesionContainer';
+import CreateSessionContainer from './CreateSessionContainer';
 import StoriesContainer from './StoriesContainer';
 import CardsContainer from './CardsContainers';
 
-import StoriesList from '../components/StoriesList'
 
 export default class App extends Component {
   render() {
@@ -24,6 +23,11 @@ export default class App extends Component {
               exact
               path="/:boardname/register"
               component={RegisterUserContainer}
+              />
+            <RouteHook
+              exact
+              path="/cards" 
+              component={CardsContainer}
             />
             <RouteHook 
               path="/:boardname" 
