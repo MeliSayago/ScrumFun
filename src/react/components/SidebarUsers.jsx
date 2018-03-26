@@ -4,10 +4,10 @@ import { ListGroupItem, ListGroup } from 'react-bootstrap';
 
 export default ({ board }) => (
   <div>
-    {console.log('holaaaa', board)}
+    {console.log('board', board[0])}
     <ListGroup>
-      {board.map((board, index) => (
-        <ListGroupItem key={index}>{board.boardName}</ListGroupItem>
+      {board.map((user, index) => (
+        <ListGroupItem key={index}>{user.name}</ListGroupItem>
       ))}
     </ListGroup>
   </div>

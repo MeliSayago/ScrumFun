@@ -11,7 +11,6 @@ class RegisterUserContainer extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    console.log('aca estoy', this.props.history);
   }
 
   onChange(e) {
@@ -22,11 +21,12 @@ class RegisterUserContainer extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.firebase.push('users', this.state);
+    const boardName = this.props.match.params.boardName;
+    this.props.firebase.push(`/${boardName}/users`, this.state);
     this.props.firebase
       .auth()
       .signInAnonymously()
-      .then(() => this.props.history.push('/game'));
+      .then(() => this.props.history.push(`/${boardName}/sidebar`));
   }
 
   render() {

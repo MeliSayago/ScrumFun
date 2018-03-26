@@ -5,26 +5,22 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 class SidebarUsersContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
-    return (
-      <SidebarUsers
-        board={Object.values(this.props.board)}
-        handleSubmit={this.handleSubmit}
-      />
-    );
+    console.log(this.props.board.users);
+    return <SidebarUsers board={Object.values(this.props.board)} />;
   }
 }
 
 export default compose(
   firebaseConnect(props => [
-    { path: 'board' }, // string equivalent 'todos'
+    { path: `${props.match.params.boardName}/users` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
-    board: state.firebase.data.board || {},
+    board: state.firebase.data[props.match.params.boardName] || {},
   })),
 )(SidebarUsersContainer);
