@@ -1,13 +1,10 @@
 import React from 'react';
+import './SidebarUsers.css';
 import { Link } from 'react-router-dom';
-import { ListGroupItem, ListGroup } from 'react-bootstrap';
+import { ListGroupItem, ListGroup, Badge } from 'react-bootstrap';
 
 export default ({ users }) => (
   <div>
-    <ListGroup>
-      {users.map((user, index) => (
-        <ListGroupItem key={index}>{user.name}</ListGroupItem>
-      ))}
-    </ListGroup>
+    {users.map((user, index) => <Badge key={index}>{user.name}</Badge>)}
   </div>
 );

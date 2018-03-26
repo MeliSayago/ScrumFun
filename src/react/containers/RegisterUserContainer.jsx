@@ -21,12 +21,14 @@ class RegisterUserContainer extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const boardName = this.props.match.params.boardName;
-    this.props.firebase.push(`/${boardName}/users`, this.state);
+    const boardName = this.props.match.params.boardname;
+    console.log('acaaa', boardName);
     this.props.firebase
       .auth()
       .signInAnonymously()
-      .then(() => this.props.history.push(`/${boardName}/sidebar`));
+      .then(data =>
+        this.props.firebase.set(`/${boardName}/users/${data.uid}`, this.state),
+      );
   }
 
   render() {
