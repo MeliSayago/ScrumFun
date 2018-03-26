@@ -22,7 +22,6 @@ class RegisterUserContainer extends Component {
   onSubmit(e) {
     e.preventDefault();
     const boardName = this.props.match.params.boardname;
-    console.log('acaaa', boardName);
     this.props.firebase
       .auth()
       .signInAnonymously()
