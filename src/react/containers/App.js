@@ -19,7 +19,9 @@ export default class App extends Component {
               component={CreateSessionContainer}
             />
             <RouteHook exact path="/:boardname" component={StoriesContainer} />
-            <RouteHook path="/cards" component={CardsContainer} />
+            <RouteHook 
+              path="/:boardname/cards" 
+              component={CardsContainer} />
             <RouteHook
               path="/:boardname/register"
               component={RegisterUserContainer}

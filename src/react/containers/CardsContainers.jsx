@@ -1,82 +1,41 @@
 import React from 'react'
-import './Cards.css'
+import { firebaseConnect, withFirebase } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import Cards from '../components/Cards'
 
 class CardsContainer extends React.Component {
 
+handleClick = (id, card) => {
+    const boardName = this.props.match.params.boardname;
+
+    this.props.firebase.set(`/${boardName}/users/${id}/card`, card)
+}
+ 
 render(){
+
+    const usersList = this.props.board.users 
+    ? Object.keys(this.props.board.users).map(userId => ({
+        ...this.props.board.users[userId], 
+        id:userId}
+    ))
+    :[];
+
     return(
-        <div className="xop-caption">
-            <ul className="xop-grid">
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>0</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>1/2</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>1</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>2</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>3</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>5</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>8</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>13</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>20</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>40</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>100</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>?</h1>
-                    </div>
-                </li>
-                <li>
-                    <div className='xop-box xop-img'>
-                        <h1>&infin;</h1>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <Cards 
+        users={usersList}
+        handleClick={this.handleClick}
+        />
     )
 }
 
 }
 
-export default CardsContainer
+export default compose(
+    firebaseConnect(props => [
+      { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
+    ]),
+    connect((state, props) => ({
+      board: state.firebase.data[props.match.params.boardname] || {},
+    })),
+  )(CardsContainer);
