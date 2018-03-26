@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import RouteHook from 'react-route-hook';
-//import store from '../store';
 import { Redirect, Switch } from 'react-router-dom';
 
 import RegisterUserContainer from './RegisterUserContainer';
 import CreateSessionContainer from './CreateSessionContainer';
 import StoriesContainer from './StoriesContainer';
+import SidebarUsersContainer from './SidebarUsersContainer';
 
 export default class App extends Component {
   render() {
@@ -15,10 +15,14 @@ export default class App extends Component {
           <Switch>
             <RouteHook
               path="/createsession"
-              component={CreateSesionContainer}
+              component={CreateSessionContainer}
             />
             <RouteHook path="/game" component={StoriesContainer} />
-            <RouteHook path="/register" component={RegisterUserContainer} />
+            <RouteHook
+              path="/:boardName/register"
+              component={RegisterUserContainer}
+            />
+            <RouteHook path="/sidebar" component={SidebarUsersContainer} />
             <Redirect from="/" to="/createsession" />
           </Switch>
         </main>

@@ -11,6 +11,7 @@ class RegisterUserContainer extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    console.log('aca estoy', this.props.history);
   }
 
   onChange(e) {
