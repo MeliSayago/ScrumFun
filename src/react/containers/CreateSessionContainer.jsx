@@ -1,6 +1,8 @@
 import React from 'react';
 import CreateSession from '../components/CreateSession';
 import { firebaseConnect, withFirebase } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 class CreateSessionContainer extends React.Component {
   constructor(props) {
@@ -22,8 +24,9 @@ class CreateSessionContainer extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.firebase.push('board', this.state);
-    this.props.history.push('/register');
+    // this.props.firebase.push('board', this.state).then((r) => 
+    this.props.history.push(`/${this.state.boardName}/register`)
+    // );
   }
 
   render() {
@@ -31,4 +34,11 @@ class CreateSessionContainer extends React.Component {
   }
 }
 
-export default withFirebase(CreateSessionContainer);
+export default compose(
+  firebaseConnect(props => [
+    { path: 'board' }, // string equivalent 'todos'
+  ]),
+  connect((state, props) => ({
+    board: state.firebase.data.board || {},
+  })),
+)(CreateSessionContainer);
