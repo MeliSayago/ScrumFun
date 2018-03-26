@@ -19,17 +19,21 @@ class StoriesContainer extends React.Component {
     e.target.reset();
   };
 
+  
+
   handleClick = e => {
     const boardName = this.props.match.params.boardname
-
     this.props.firebase.remove(`${boardName}/stories/${e.target.id}`)
   }
 
   render() {
+
+    const storiesList = this.props.board.stories ? Object.keys(this.props.board.stories).map(storyId => ({...this.props.board.stories[storyId], id: storyId})) : []
+
     return (
       <Stories
         handleClick={this.handleClick}
-        stories={Object.values(this.props.board || [])}
+        stories={storiesList}
         handleSubmit={this.handleSubmit}
       />
     );

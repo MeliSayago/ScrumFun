@@ -3,7 +3,6 @@ import {FormControl,FormGroup,ListGroupItem,ListGroup,Button} from 'react-bootst
 
 export default ({handleClick, handleSubmit, stories}) => (
     <div>
-        {console.log("stories",stories)}
         <form onSubmit={handleSubmit}>
             <FormGroup >
                 <FormControl
