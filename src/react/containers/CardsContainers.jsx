@@ -5,8 +5,12 @@ import { compose } from 'redux';
 import Cards from '../components/Cards'
 
 class CardsContainer extends React.Component {
+    constructor() {
+        super()
+        this.handleClick = this.handleClick.bind(this);
+      }
 
-handleClick = (id, card) => {
+handleClick (id, card) {
     const boardName = this.props.match.params.boardname;
 
     this.props.firebase.set(`/${boardName}/users/${id}/card`, card)
