@@ -29,7 +29,7 @@
     height: 100%;
     position: relative;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 20px;
     -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 .xop-box h1 {
@@ -42,6 +42,12 @@
 
 .xop-box:hover{
     transform: scale(1.05);
+}
+
+.xop-box:focus {
+    border-radius: 20px;
+    border: 2px solid red;
+    outline: none;
 }
 
 .xop-img {
