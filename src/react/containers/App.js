@@ -8,7 +8,7 @@ import StoriesContainer from './StoriesContainer';
 import SidebarUsersContainer from './SidebarUsersContainer';
 import CardsContainer from './CardsContainers';
 import Carousel from './Carrusel'
-
+import ResultsContainer from './ResultsContainer'
 
 export default class App extends Component {
   render() {
@@ -19,6 +19,10 @@ export default class App extends Component {
             <RouteHook
               path="/createsession"
               component={CreateSessionContainer}
+            />
+            <RouteHook
+              path="/:boardname/results"
+              component={ResultsContainer}
             />
             <RouteHook 
               exact 
