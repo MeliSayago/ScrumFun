@@ -36,7 +36,6 @@ class StoriesContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     const storiesList = this.props.board.stories ? Object.keys(this.props.board.stories).map(storyId => ({...this.props.board.stories[storyId], id: storyId})) : []
     if(!this.state.show){
       return (
