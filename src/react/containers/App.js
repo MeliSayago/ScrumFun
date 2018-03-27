@@ -7,8 +7,10 @@ import CreateSessionContainer from './CreateSessionContainer';
 import StoriesContainer from './StoriesContainer';
 import SidebarUsersContainer from './SidebarUsersContainer';
 import CardsContainer from './CardsContainers';
-import Carousel from './Carrusel';
+
 import StoryResultsContainer from './StoryResultsContainer';
+import Carousel from './Carrusel';
+import ResultsContainer from './ResultsContainer';
 
 export default class App extends Component {
   render() {
@@ -24,6 +26,11 @@ export default class App extends Component {
               path="/:boardname/storyresults"
               component={StoryResultsContainer}
             />
+            <RouteHook
+              path="/:boardname/results"
+              component={ResultsContainer}
+            />
+            <RouteHook exact path="/:boardname" component={StoriesContainer} />
             <RouteHook exact path="/:boardname" component={StoriesContainer} />
             <RouteHook path="/:boardname/cards" component={CardsContainer} />
             <RouteHook
