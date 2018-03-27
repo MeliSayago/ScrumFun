@@ -4,10 +4,13 @@ import { firebaseConnect, withFirebase } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+
 class StoriesContainer extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      show: false,
+    };
   }
 
   handleSubmit = e => {
@@ -24,27 +27,39 @@ class StoriesContainer extends React.Component {
     this.props.firebase.remove(`${boardName}/stories/${e.target.id}`);
   };
 
-  render() {
-    const storiesList = this.props.board.stories
-      ? Object.keys(this.props.board.stories).map(storyId => ({
-          ...this.props.board.stories[storyId],
-          id: storyId,
-        }))
-      : [];
+  buttonClick = e => {
+    if(this.state.show===false){
+      this.setState({show: true})
+    }else{
+      this.setState({show: false})
+    }
+  }
 
-    return (
-      <Stories
-        handleClick={this.handleClick}
-        stories={storiesList}
-        handleSubmit={this.handleSubmit}
-      />
-    );
+  render() {
+    console.log(this.state)
+    const storiesList = this.props.board.stories ? Object.keys(this.props.board.stories).map(storyId => ({...this.props.board.stories[storyId], id: storyId})) : []
+    if(!this.state.show){
+      return (
+          <button className="btn btn-primary" onClick={this.buttonClick}>Show Stories</button>
+        ) 
+    }else{
+      return (
+        <div>
+          <Stories
+            buttonClick={this.buttonClick}
+            handleClick={this.handleClick}
+            stories={storiesList}
+            handleSubmit={this.handleSubmit}
+          /> 
+        </div>
+      );
+    
   }
 }
-
+}
 export default compose(
   firebaseConnect(props => [
-    { path: `${props.match.params.boardname}/stories` }, // string equivalent 'todos'
+    {path: `${props.match.params.boardname}/stories` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},

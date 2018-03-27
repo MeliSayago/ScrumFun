@@ -7,6 +7,8 @@ import CreateSessionContainer from './CreateSessionContainer';
 import StoriesContainer from './StoriesContainer';
 import SidebarUsersContainer from './SidebarUsersContainer';
 import CardsContainer from './CardsContainers';
+import Carousel from './Carrusel'
+
 
 export default class App extends Component {
   render() {
@@ -18,14 +20,18 @@ export default class App extends Component {
               path="/createsession"
               component={CreateSessionContainer}
             />
-            <RouteHook exact path="/:boardname" component={StoriesContainer} />
+            <RouteHook 
+              exact 
+              path="/:boardname" 
+              component={StoriesContainer} 
+            />
             <RouteHook 
               path="/:boardname/cards" 
               component={CardsContainer} />
             <RouteHook
               path="/:boardname/register"
               component={RegisterUserContainer}
-            />
+              />
             <RouteHook
               path="/:boardName/sidebar"
               component={SidebarUsersContainer}
