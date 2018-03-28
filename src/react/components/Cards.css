@@ -2,63 +2,75 @@
     max-width: 100px;
     margin: 0 auto;
     padding: 6% 2%;
-}
-
-.xop-grid {
+ }
+ 
+ .xop-grid {
     margin: 20px 0 0 0 ;
     padding: 0;
     list-style: none;
     display: block;
     text-align: center;
     width: 100%;
-}
-
-.xop-grid:after {
+ }
+ 
+ .xop-grid:after {
     clear: both;
-}
-
-.xop-grid li {
+ }
+ 
+ .xop-grid li {
     width: 95px;
     height: 120px;
     display: inline-block;
     margin: 5px;
-}
-
-.xop-box {
+ }
+ 
+ .xop-box {
     width: 100%;
     height: 100%;
     position: relative;
     cursor: pointer;
     border-radius: 10px;
     -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-}
-.xop-box h1 {
-    position: absolute;
-    top: 15%;
-    left: 25%;
-    font-size: 20px;
-    transform: translate(-50%, -50%);
+ }
+
+ .xop-box img {
+    width: 100%;
+    height: 100%;
+    padding: 8px 2px;
 }
 
-.font {
-    position: absolute;
-    top: 90%;
-    left: 80%;
-    font-size: 20px;
-    transform: translate(-50%, -50%);
-}
-
-.xop-box:hover{
-    transform: scale(1.05);
-}
-
-.xop-box:focus {
+.selected {
     border-radius: 20px;
     border: 2px solid red;
     outline: none;
 }
 
-.xop-img {
+ .xop-box h1 {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+ }
+ 
+ .font {
+    position: absolute;
+    top: 90%;
+    left: 80%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+ }
+ 
+ .xop-box:hover{
+    transform: scale(1.05);
+ }
+ 
+ .xop-box:focus {
+    border-radius: 20px;
+    border: 2px solid red;
+    outline: none;
+ }
+ 
+ .xop-img {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.10))
-}
-
+ }

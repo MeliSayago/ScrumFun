@@ -12,7 +12,6 @@ class CardsContainer extends React.Component {
 
 handleClick (id, card) {
     const boardName = this.props.match.params.boardname;
-
     this.props.firebase.set(`/${boardName}/users/${id}/card`, card)
 }
  
