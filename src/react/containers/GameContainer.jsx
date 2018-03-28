@@ -1,29 +1,32 @@
-import React from 'react'
-import Cards from './CardsContainers';
-import StoriesContainer from './StoriesContainer'
-import SidebarContainer from './SidebarUsersContainer'
+import React from 'react';
+import Results from '../components/Results';
 import { firebaseConnect, withFirebase } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import StoriesNavbarContainer from './StoriesNavbarContainer'
+import CardsContainer from './CardsContainers'
+import SidebarUsersContainer from './SidebarUsersContainer'
+
 
 class GameContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
 
-    render(){
-        return(
-            <div>
-                <div>
-                    <StoriesContainer {...this.props}/>
-                </div>
-                <div>
-                    <Cards {...this.props}/>
-                </div>
-                <div>
-                    <SidebarContainer {...this.props}/>
-                </div>
-            </div>
+  
+  render() {
+        return (
+        <div>
+            <StoriesNavbarContainer {...this.props}/> 
+        <div>
+            <CardsContainer {...this.props}/>
+            <SidebarUsersContainer {...this.props}/>
+        </div>
+        </div>   
         )
-    }
-
+  }
 }
 
 export default compose(

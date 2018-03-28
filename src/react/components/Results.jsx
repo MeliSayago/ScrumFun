@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid,Row,Col,Image } from 'react-bootstrap';
 import cardList from '../Card/CardList'
+import './Results.css'
 
 export default (users) => (
     <div>
