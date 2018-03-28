@@ -31,7 +31,7 @@ export default class App extends Component {
               component={ResultsContainer}
             />
             <RouteHook exact path="/:boardname" component={StoriesContainer} />
-            <RouteHook exact path="/:boardname" component={StoriesContainer} />
+
             <RouteHook path="/:boardname/cards" component={CardsContainer} />
             <RouteHook
               path="/:boardname/register"

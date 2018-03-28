@@ -4,10 +4,26 @@ import { firebaseConnect, withFirebase } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
+
 class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.handleClickButton = this.handleClickButton.bind(this);
+    this.nextStory = this.nextStory.bind(this);
+  }
+
+  handleClickButton(storyId, card) {
+    const boardName = this.props.match.params.boardname;
+
+    this.props.firebase.set(`/${boardName}/stories/${storyId}/card`, card);
+  }
+
+  nextStory(storyId) {
+    const boardName = this.props.match.params.boardname;
+
+    this.props.firebase.set(`/${boardName}/stories/${storyId}/completed`, true);
   }
 
   render() {
@@ -23,7 +39,18 @@ class StoryResultsContainer extends React.Component {
           id: userId,
         }))
       : [];
-    return <StoryResults stories={storiesList} users={usersList} />;
+
+    var story = StoryIncompleted(storiesList);
+    var card = Moda(CardList(usersList));
+
+    return (
+      <StoryResults
+        story={story ? story : ''}
+        cardModa={card}
+        handleClickButton={this.handleClickButton}
+        nextStory={this.nextStory}
+      />
+    );
   }
 }
 
