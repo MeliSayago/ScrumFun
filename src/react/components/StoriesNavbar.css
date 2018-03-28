@@ -1,0 +1,17 @@
+
+.collapse {
+    position: fixed;
+    width: 92%;
+    top: 7%;
+    z-index: 50;
+    background-color: white;
+}
+
+.navbar-collapse{
+    position: fixed;
+    width: 92%;
+    top: 7%;
+    z-index: 50;
+    background-color: white;
+
+}
