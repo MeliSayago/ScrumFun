@@ -7,8 +7,6 @@ import CreateSessionContainer from './CreateSessionContainer';
 import ResultsContainer from './ResultsContainer'
 import GameContainer from './GameContainer';
 import StoryResultsContainer from './StoryResultsContainer';
-import ResultsContainer from './ResultsContainer';
-import GameContainer from './GameContainer'
 
 export default class App extends Component {
   render() {
@@ -27,10 +25,6 @@ export default class App extends Component {
             <RouteHook
               path="/:boardname/results"
               component={ResultsContainer}
-            />
-            <RouteHook
-              path="/:boardname/game"
-              component={GameContainer}
             />
             <RouteHook
               path="/:boardname/game"

@@ -12,10 +12,13 @@ const Cards = ({users, handleClick}) => (
                     <Card className='xop-box xop-img'>
                         <img src={card.img} alt="DB"/>
                         {users.map(user => (
-                            <h1 key={user.id} 
-                                onClick={()=>handleClick(user.id, card.points)}>
-                                {card.points}
-                            </h1>
+                            <div>
+                                <h1 key={user.id} 
+                                    onClick={()=>handleClick(user.id, card.points)}>
+                                    {card.points}
+                                </h1>
+                                <h2 className='font'>{card.points}</h2>
+                            </div>
                         ))}
                     </Card>
                 </li>
