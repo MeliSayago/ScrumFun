@@ -33,17 +33,6 @@
     -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
-.xop-box img {
-    width: 100%;
-    height: 100%;
-    padding: 8px 2px;
-}
-
-.selected {
-    border-radius: 20px;
-    border: 2px solid red;
-    outline: none;
-}
 
 .xop-box h1 {
     position: absolute;
@@ -57,7 +46,20 @@
     transform: scale(1.05);
 }
 
-.xop-img {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.10));
+.xop-box:focus {
+    border-radius: 20px;
+    border: 2px solid red;
+    outline: none;
+}
 
+.xop-image-1 {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.10)),
+}
+
+.xop-image-2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.10));
+}
+
+.xop-image-3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.10));
 }
