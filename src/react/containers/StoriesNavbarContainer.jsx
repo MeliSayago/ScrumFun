@@ -9,7 +9,7 @@ class StoriesContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      show: false,
+        collapsed:true
     };
   }
 
@@ -27,12 +27,10 @@ class StoriesContainer extends React.Component {
     this.props.firebase.remove(`${boardName}/stories/${e.target.id}`);
   };
 
-  buttonClick = e => {
-    if(this.state.show===false){
-      this.setState({show: true})
-    }else{
-      this.setState({show: false})
-    }
+toggleNavbar = e => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   }
 
   render() {
@@ -42,25 +40,18 @@ class StoriesContainer extends React.Component {
       id: storyId})) 
     : []
     
-    
-      if(!this.state.show){
-      return (
-          <button className="btn btn-primary" onClick={this.buttonClick}>Show Stories</button>
-        ) 
-    }else{
-      return (
-        <div>
-          <StoriesNavbar
-            buttonClick={this.buttonClick}
-            handleClick={this.handleClick}
-            stories={storiesList}
-            handleSubmit={this.handleSubmit}
-          /> 
-        </div>
-      );
-    
+    return (
+    <div>
+        <StoriesNavbar
+        state={this.state}
+        toggleNavbar={this.toggleNavbar}
+        handleClick={this.handleClick}
+        stories={storiesList}
+        handleSubmit={this.handleSubmit}
+        /> 
+    </div>
+    ); 
   }
-}
 }
 export default compose(
   firebaseConnect(props => [

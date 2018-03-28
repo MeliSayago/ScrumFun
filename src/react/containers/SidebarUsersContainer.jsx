@@ -17,16 +17,15 @@ class SidebarUsersContainer extends React.Component {
           id: userId,
         }))
       : [];
-
     return <SidebarUsers users={usersList} state={this.state} />;
   }
 }
 
 export default compose(
   firebaseConnect(props => [
-    { path: `${props.match.params.boardName}/users` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
-    board: state.firebase.data[props.match.params.boardName] || {},
+    board: state.firebase.data[props.match.params.boardname] || {},
   })),
 )(SidebarUsersContainer);

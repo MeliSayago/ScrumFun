@@ -12,6 +12,7 @@ export default ({ handleClick, handleSubmit, stories, buttonClick }) => (
     <button className="btn btn-danger float-left" onClick={buttonClick}>
       Close
     </button>
+    <h1>Storie name</h1>
     <form onSubmit={handleSubmit}>
       <FormGroup>
         <FormControl
@@ -21,7 +22,7 @@ export default ({ handleClick, handleSubmit, stories, buttonClick }) => (
           label="newStory"
           placeholder="Story Name"
         />
-        <button>Submit</button>
+        {/* <button>Submit</button> */}
       </FormGroup>
     </form>
     <div>
