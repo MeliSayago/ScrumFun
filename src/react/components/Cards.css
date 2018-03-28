@@ -18,10 +18,10 @@
 }
 
 .xop-grid li {
-    width: 75px;
-    height: 90px;
+    width: 95px;
+    height: 120px;
     display: inline-block;
-    margin: 20px;
+    margin: 5px;
 }
 
 .xop-box {
@@ -29,14 +29,22 @@
     height: 100%;
     position: relative;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 10px;
     -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 .xop-box h1 {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 75px;
+    top: 15%;
+    left: 25%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.font {
+    position: absolute;
+    top: 90%;
+    left: 80%;
+    font-size: 20px;
     transform: translate(-50%, -50%);
 }
 
