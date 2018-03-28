@@ -4,7 +4,7 @@ import { Redirect, Switch } from 'react-router-dom';
 
 import RegisterUserContainer from './RegisterUserContainer';
 import CreateSessionContainer from './CreateSessionContainer';
-import ResultsContainer from './ResultsContainer'
+import ResultsContainer from './ResultsContainer';
 import GameContainer from './GameContainer';
 import StoryResultsContainer from './StoryResultsContainer';
 
@@ -26,10 +26,8 @@ export default class App extends Component {
               path="/:boardname/results"
               component={ResultsContainer}
             />
-            <RouteHook
-              path="/:boardname/game"
-              component={GameContainer}
-            />
+
+            <RouteHook path="/:boardname/game" component={GameContainer} />
             <RouteHook
               path="/:boardname/register"
               component={RegisterUserContainer}
