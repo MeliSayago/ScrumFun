@@ -1,7 +1,10 @@
 import React from 'react';
 import './RegisterUser.css';
+import {ButtonToolbar,DropdownButton,MenuItem} from 'react-bootstrap'
+import Clipboard from 'react-clipboard.js';
 
-export default ({ onChange, state, onSubmit }) => {
+
+export default ({ onChange, state, onSubmit,copyUrl }) => {
   return (
     <div className="text-center auth-form mx-auto">
       <form className="form-signin" onSubmit={onSubmit}>
@@ -22,6 +25,11 @@ export default ({ onChange, state, onSubmit }) => {
           <option>Developer</option>
           <option>Scrum Master</option>
         </select>
+        <br/>
+        <Clipboard data-clipboard-text={copyUrl}>
+          copy Url
+        </Clipboard>
+       
         <button
           className="btn btn-lg btn-primary btn-block"
           type="submit"
