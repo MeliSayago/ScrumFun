@@ -10,7 +10,7 @@ class Card extends React.Component {
 
     render(){
         return(
-            <div className='xop-box xop-img' onClick={()=>{this.setState({isFocus: true})}}>
+            <div className={`xop-box xop-img ${this.state.isFocus && "selected"}`} onClick={()=>{this.setState({isFocus: true})}}>
                 {this.props.children}
             </div>
         )
