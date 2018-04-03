@@ -10,6 +10,7 @@ export default ({ cardModa, story, handleClickButton, nextStory, voteAgain }) =>
           {cardModa &&
             cardModa.map((card, index) => (
               <li key={index}>
+                {console.log(card)}
                 <button className="xop-box xop-img">
                   <h1
                     key={index}
