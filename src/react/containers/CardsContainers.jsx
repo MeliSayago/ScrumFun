@@ -10,13 +10,12 @@ class CardsContainer extends React.Component {
         this.handleClick = this.handleClick.bind(this);
       }
 
-handleClick (id, card) {
+handleClick (card) {
     const boardName = this.props.match.params.boardname;
-    this.props.firebase.set(`/${boardName}/users/${id}/card`, card)
+    this.props.firebase.set(`/${boardName}/users/${this.props.userId}/card`, card)
 }
  
 render(){
-
     const usersList = this.props.board.users 
     ? Object.keys(this.props.board.users).map(userId => ({
         ...this.props.board.users[userId], 
@@ -26,7 +25,6 @@ render(){
 
     return(
         <Cards 
-        users={usersList}
         handleClick={this.handleClick}
         />
     )
@@ -40,5 +38,6 @@ export default compose(
     ]),
     connect((state, props) => ({
       board: state.firebase.data[props.match.params.boardname] || {},
+      userId: state.firebase.auth.uid
     })),
   )(CardsContainer);

@@ -3,23 +3,18 @@ import cardList from '../Card/CardList'
 import './Cards.css'
 import Card from './Card'
 
-const Cards = ({users, handleClick}) => (
+const Cards = ({handleClick}) => (
 
     <div className="xop-caption">
         <ul className="xop-grid ">
-            {cardList.map((card, index) => (
-                <li key={index}>
+            {cardList.map((card) => (
+                <li key={card.points}>
                     <Card className='xop-box xop-img'>
-                        <img src={card.img} alt="DB"/>
-                        {users.map(user => (
+                        <img onClick={()=>handleClick(card.points)} src={card.img} alt="DB"/>
                             <div>
-                                <h1 key={user.id} 
-                                    onClick={()=>handleClick(user.id, card.points)}>
-                                    {card.points}
-                                </h1>
+                                <h1>{card.points}</h1>
                                 <h2 className='font'>{card.points}</h2>
                             </div>
-                        ))}
                     </Card>
                 </li>
             ))}

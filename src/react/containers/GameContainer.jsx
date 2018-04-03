@@ -18,12 +18,16 @@ class GameContainer extends React.Component {
   
   render() {
         return (
-        <div>
+        <div style={{backgroundImage:"url('http://images.pushsquare.com/news/2015/08/dragon_ball_xenoverse_dares_you_to_take_part_in_its_huge_online_tournament/attachment/0/original.jpg')",backgroundSize:"100% 100%"}}>
+            <div>
             <StoriesNavbarContainer {...this.props}/> 
-        <div>
+            </div>
+            <div>
             <CardsContainer {...this.props}/>
+            </div>
+            <div>
             <SidebarUsersContainer {...this.props}/>
-        </div>
+            </div>
         </div>   
         )
   }

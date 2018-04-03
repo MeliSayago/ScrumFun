@@ -28,7 +28,7 @@ class RegisterUserContainer extends Component {
       .then(data =>
         this.props.firebase.set(`/${boardName}/users/${data.uid}`, this.state),
       );
-      this.props.history.push(`/${boardName}`);
+      this.props.history.push(`/${boardName}/game`);
   }
 
   render() {
