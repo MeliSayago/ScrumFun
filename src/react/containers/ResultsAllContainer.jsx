@@ -12,7 +12,7 @@ class ResultsAllContainer extends React.Component {
         ...this.props.board.stories[storyId], 
         id: storyId})) 
         : []
-        const { result } = this.props.board
+        
         return(
             <ResultsAll 
             storiesList={storiesList}/>

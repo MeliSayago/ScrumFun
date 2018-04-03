@@ -30,7 +30,10 @@ export default ({ handleClick, handleSubmit, stories, toggleNavbar,state }) => (
             <NavItem>
                 {stories.map((story, index) => (
             <NavLink key={index}>
-                    {story.storyName}
+                <span className="storyFont">
+
+                {story.storyName}
+                </span>
                     <Button
                     onClick={handleClick}
                     id={story.id}

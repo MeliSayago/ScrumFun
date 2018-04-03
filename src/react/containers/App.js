@@ -6,8 +6,8 @@ import RegisterUserContainer from './RegisterUserContainer';
 import CreateSessionContainer from './CreateSessionContainer';
 import GameContainer from './GameContainer';
 import ShowResults from './ShowResults'
-import ResultsContainer from './ResultsContainer';
 import ResultsAllContainer from './ResultsAllContainer'
+import StoryResultsContainer from './StoryResultsContainer';
 
 export default class App extends Component {
   render() {
@@ -19,20 +19,18 @@ export default class App extends Component {
               path="/createsession"
               component={CreateSessionContainer}
             />
+            <RouteHook path="/:boardname/results" component={ShowResults} />
             <RouteHook
               path="/:boardname/storyresults"
               component={ShowResults}
             />
-            <RouteHook 
-              path="/:boardname/game" 
-              component={GameContainer} 
-            />
+            <RouteHook path="/:boardname/game" component={GameContainer} />
             <RouteHook
               path="/:boardname/register"
               component={RegisterUserContainer}
             />
             <RouteHook
-              path='/:boardname/results'
+              path='/:boardname/resultsall'
               component={ResultsAllContainer}
             />
             <Redirect from="/" to="/createsession" />

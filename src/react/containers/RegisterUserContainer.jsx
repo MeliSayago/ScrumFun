@@ -7,7 +7,7 @@ class RegisterUserContainer extends Component {
     super(props);
     this.state = {
       name: '',
-      rol: 'develop',
+      rol: '',
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -18,22 +18,37 @@ class RegisterUserContainer extends Component {
       [e.target.name]: e.target.value,
     });
   }
-
+  
   onSubmit(e) {
     e.preventDefault();
     const boardName = this.props.match.params.boardname;
-    this.props.firebase
-      .auth()
-      .signInAnonymously()
-      .then(data =>
-        this.props.firebase.set(`/${boardName}/users/${data.uid}`, this.state),
-      );
+    if(this.state.rol == 'Developer'){
+      this.props.firebase
+        .auth()
+        .signInAnonymously()
+        .then(data =>
+          this.props.firebase.set(`/${boardName}/users/${data.uid}`, this.state),
+        );
+    }else{
+      this.props.firebase
+        .auth()
+        .signInAnonymously()
+        .then(data =>
+          this.props.firebase.set(`/${boardName}/Scrum Master/`, this.state),
+        );
+    }
       this.props.history.push(`/${boardName}/game`);
   }
 
+ 
+    
+
+
   render() {
+    const copyUrl = `http://localhost:3000${this.props.location.pathname}`
     return (
       <RegisterUser
+        copyUrl={copyUrl}
         onChange={this.onChange}
         state={this.state}
         onSubmit={this.onSubmit}
