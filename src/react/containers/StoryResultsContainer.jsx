@@ -1,6 +1,11 @@
 import React from 'react';
 import StoryResults from '../components/StoryResults';
-import { firebaseConnect, withFirebase } from 'react-redux-firebase';
+import {
+  firebaseConnect,
+  withFirebase,
+  isLoaded,
+  isEmpty,
+} from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
@@ -9,14 +14,15 @@ import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { isLoad: false };
     this.handleClickButton = this.handleClickButton.bind(this);
     this.nextStory = this.nextStory.bind(this);
+    this.voteAgain = this.voteAgain.bind(this);
   }
 
   handleClickButton(storyId, card) {
     const boardName = this.props.match.params.boardname;
-
+    console.log(storyId);
     this.props.firebase.set(`/${boardName}/stories/${storyId}/card`, card);
   }
 
@@ -24,6 +30,11 @@ class StoryResultsContainer extends React.Component {
     const boardName = this.props.match.params.boardname;
 
     this.props.firebase.set(`/${boardName}/stories/${storyId}/completed`, true);
+    this.props.history.push(`/${boardName}/game`);
+  }
+
+  voteAgain() {
+    this.props.history.push(`/${this.props.match.params.boardname}/game`);
   }
 
   render() {
@@ -41,7 +52,10 @@ class StoryResultsContainer extends React.Component {
       : [];
 
     var story = StoryIncompleted(storiesList);
-    var card = Moda(CardList(usersList));
+
+    var card = !isLoaded(this.props.board)
+      ? 'Loading'
+      : isEmpty(this.props.board) ? undefined : Moda(CardList(usersList));
 
     return (
       <StoryResults
@@ -49,6 +63,7 @@ class StoryResultsContainer extends React.Component {
         cardModa={card}
         handleClickButton={this.handleClickButton}
         nextStory={this.nextStory}
+        voteAgain={this.voteAgain}
       />
     );
   }
