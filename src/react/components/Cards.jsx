@@ -1,26 +1,21 @@
 import React from 'react'
-import cardList from '../Card/CardList'
 import './Cards.css'
 import Card from './Card'
 
-const Cards = ({users, handleClick}) => (
+const Cards = ({users, handleClick, CardList}) => (
 
     <div className="xop-caption">
         <ul className="xop-grid ">
-            {cardList.map((card, index) => (
-                <li key={index}>
-                    <Card className='xop-box xop-img'>
-                        <img src={card.img} alt="DB"/>
-                        {users.map(user => (
-                            <div>
-                                <h1 key={user.id} 
-                                    onClick={()=>handleClick(user.id, card.points)}>
-                                    {card.points}
-                                </h1>
-                                <h2 className='font'>{card.points}</h2>
-                            </div>
-                        ))}
-                    </Card>
+            {CardList.map((card) => (
+                <li key={card.id}>
+                    {users.map(user => (
+                        <button key={user.id} className='xop-box xop-img'  
+                            onClick={()=>handleClick(user.id, card.points)}>
+                            <img src={card.img} alt="Cards"/>
+                            <h1>{card.points}</h1>
+                            <h2 className='font'>{card.points}</h2>
+                        </button>
+                    ))}
                 </li>
             ))}
         </ul> 
