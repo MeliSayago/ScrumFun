@@ -11,23 +11,12 @@ class CardsContainer extends React.Component {
         this.handleClick = this.handleClick.bind(this);
       }
 
-<<<<<<< HEAD
-handleClick (id, card) {
-    console.log('Card', card)
-=======
 handleClick (card) {
->>>>>>> c92043949506a9f0aedadefec0f703f55fa5f4a2
     const boardName = this.props.match.params.boardname;
     this.props.firebase.set(`/${boardName}/users/${this.props.userId}/card`, card)
 }
  
 render(){
-    const usersList = this.props.board.users 
-    ? Object.keys(this.props.board.users).map(userId => ({
-        ...this.props.board.users[userId], 
-        id:userId}
-    ))
-    :[];
 
     let CardList
 
@@ -38,6 +27,8 @@ render(){
     } else {
         CardList = FibonacciCards;
     }   
+
+    console.log(CardList)
 
     return(        
         <Cards 
