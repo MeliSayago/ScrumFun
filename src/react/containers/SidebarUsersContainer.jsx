@@ -7,7 +7,9 @@ import { compose } from 'redux';
 class SidebarUsersContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
+    
   }
 
   render() {
@@ -17,7 +19,7 @@ class SidebarUsersContainer extends React.Component {
           id: userId,
         }))
       : [];
-    return <SidebarUsers users={usersList} state={this.state} />;
+    return <SidebarUsers users={usersList} state={this.state}/>;
   }
 }
 
