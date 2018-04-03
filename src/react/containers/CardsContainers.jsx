@@ -1,5 +1,5 @@
 import React from 'react'
-import { firebaseConnect, withFirebase } from 'react-redux-firebase';
+import { firebaseConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Cards from '../components/Cards';
@@ -18,22 +18,21 @@ handleClick (card) {
  
 render(){
 
-    let CardList
+    const { theme } = this.props.board
 
-    if(this.props.board.theme === 'dragonBall'){
-        CardList = DragonballCards;
-    } else if(this.props.board.theme === 'simpsons'){
+    let CardList;
+
+    if(theme === 'dragonBall'){
+        CardList = DragonballCards; 
+    } else if(theme === 'simpsons'){
         CardList = SimpsonsCards;
-    } else {
+    } else if(theme === 'fibonacci'){
         CardList = FibonacciCards;
-    }   
-
-    console.log(CardList)
-
+    }
     return(        
         <Cards 
         handleClick={this.handleClick}
-        CardList={CardList}
+        CardList={CardList ? CardList : []}
         />
     )
 }
