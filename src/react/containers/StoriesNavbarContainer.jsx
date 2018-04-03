@@ -1,16 +1,22 @@
 import React from 'react';
 // import Stories from '../components/Stories';
-import { firebaseConnect, withFirebase } from 'react-redux-firebase';
+import {
+  firebaseConnect,
+  withFirebase,
+  isEmpty,
+  isLoaded,
+} from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import StoriesNavbar from '../components/StoriesNavbar'
+import StoriesNavbar from '../components/StoriesNavbar';
 
 class StoriesContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-        collapsed:true
+      collapsed: true,
     };
+    this.fnSelectStory = this.fnSelectStory.bind(this);
   }
 
   handleSubmit = e => {
@@ -25,37 +31,70 @@ class StoriesContainer extends React.Component {
   handleClick = e => {
     const boardName = this.props.match.params.boardname;
     this.props.firebase.remove(`${boardName}/stories/${e.target.id}`);
+    console.log('BOARD', this.props.board);
+    console.log('TARGET', e.target.id, this.id);
+    if (e.target.id === this.props.board.selectedStory.id) {
+      this.props.firebase.remove(`${boardName}/selectedStory`);
+      this.selectStory();
+    }
   };
 
-toggleNavbar = e => {
+  fnSelectStory = selectedStory => {
+    const boardName = this.props.match.params.boardname;
+    this.props.firebase.set(`${boardName}/selectedStory`, selectedStory);
+  };
+
+  toggleNavbar = e => {
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
+  };
+
+  defaultStory(story) {
+    return !story.card;
+  }
+
+  selectStory() {
+    console.log('STORIES LIST', this.storiesList);
+    var selectedStory = this.storiesList.filter(this.defaultStory);
+    if (selectedStory.length) {
+      const boardName = this.props.match.params.boardname;
+      this.props.firebase.set(`${boardName}/selectedStory`, selectedStory[0]);
+    }
   }
 
   render() {
-    const storiesList = this.props.board.stories 
-    ? Object.keys(this.props.board.stories).map(storyId => ({
-      ...this.props.board.stories[storyId], 
-      id: storyId})) 
-    : []
-    
+    this.storiesList = this.props.board.stories
+      ? Object.keys(this.props.board.stories).map(storyId => ({
+          ...this.props.board.stories[storyId],
+          id: storyId,
+        }))
+      : [];
+
+    if (isLoaded(this.props.board) && !this.props.board.selectedStory) {
+      this.selectStory();
+    }
+
+    console.log('select', this.props.board.selectedStory);
+
     return (
-    <div>
+      <div>
         <StoriesNavbar
-        state={this.state}
-        toggleNavbar={this.toggleNavbar}
-        handleClick={this.handleClick}
-        stories={storiesList}
-        handleSubmit={this.handleSubmit}
-        /> 
-    </div>
-    ); 
+          state={this.state}
+          toggleNavbar={this.toggleNavbar}
+          handleClick={this.handleClick}
+          stories={this.storiesList}
+          handleSubmit={this.handleSubmit}
+          selectStory={this.props.board.selectedStory}
+          fnSelectStory={this.fnSelectStory}
+        />
+      </div>
+    );
   }
 }
 export default compose(
   firebaseConnect(props => [
-    {path: `${props.match.params.boardname}/stories` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/stories` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
