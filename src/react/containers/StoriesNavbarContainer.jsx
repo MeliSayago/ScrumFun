@@ -22,9 +22,12 @@ class StoriesContainer extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const boardName = this.props.match.params.boardname;
-    this.props.firebase.push(`${boardName}/stories`, {
-      [e.target[0].name]: e.target[0].value,
-    });
+    if (e.target[0].value.trim() !== '') {
+      this.props.firebase.push(`${boardName}/stories`, {
+        [e.target[0].name]: e.target[0].value,
+      });
+    }
+
     e.target.reset();
   };
 

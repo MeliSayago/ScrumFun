@@ -5,8 +5,8 @@ import { Redirect, Switch } from 'react-router-dom';
 import RegisterUserContainer from './RegisterUserContainer';
 import CreateSessionContainer from './CreateSessionContainer';
 import GameContainer from './GameContainer';
-import ShowResults from './ShowResults'
-import ResultsAllContainer from './ResultsAllContainer'
+import ShowResults from './ShowResults';
+import ResultsAllContainer from './ResultsAllContainer';
 import StoryResultsContainer from './StoryResultsContainer';
 
 export default class App extends Component {
@@ -22,7 +22,7 @@ export default class App extends Component {
             <RouteHook path="/:boardname/results" component={ShowResults} />
             <RouteHook
               path="/:boardname/storyresults"
-              component={ShowResults}
+              component={StoryResultsContainer}
             />
             <RouteHook path="/:boardname/game" component={GameContainer} />
             <RouteHook
@@ -30,7 +30,7 @@ export default class App extends Component {
               component={RegisterUserContainer}
             />
             <RouteHook
-              path='/:boardname/resultsall'
+              path="/:boardname/resultsall"
               component={ResultsAllContainer}
             />
             <Redirect from="/" to="/createsession" />

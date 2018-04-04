@@ -22,15 +22,14 @@ class StoryResultsContainer extends React.Component {
 
   handleClickButton(storyId, card) {
     const boardName = this.props.match.params.boardname;
-    console.log(storyId);
     this.props.firebase.set(`/${boardName}/stories/${storyId}/card`, card);
+    document.getElementById('nextStory').removeAttribute('disabled');
   }
 
-  nextStory(storyId) {
+  nextStory() {
     const boardName = this.props.match.params.boardname;
-
-    this.props.firebase.set(`/${boardName}/stories/${storyId}/completed`, true);
     this.props.history.push(`/${boardName}/game`);
+    console.log('holaaaaa');
   }
 
   voteAgain() {
@@ -51,15 +50,15 @@ class StoryResultsContainer extends React.Component {
         }))
       : [];
 
-    var story = StoryIncompleted(storiesList);
-
     var card = !isLoaded(this.props.board)
       ? 'Loading'
       : isEmpty(this.props.board) ? undefined : Moda(CardList(usersList));
 
     return (
       <StoryResults
-        story={story ? story : ''}
+        story={
+          this.props.board.selectedStory ? this.props.board.selectedStory : ''
+        }
         cardModa={card}
         handleClickButton={this.handleClickButton}
         nextStory={this.nextStory}
