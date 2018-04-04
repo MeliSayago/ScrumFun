@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <main role="main" className="container-fluid">
+        <main role="main">
           <Switch>
             <RouteHook
               path="/createsession"
