@@ -31,11 +31,10 @@ class StoriesContainer extends React.Component {
   handleClick = e => {
     const boardName = this.props.match.params.boardname;
     this.props.firebase.remove(`${boardName}/stories/${e.target.id}`);
-    console.log('BOARD', this.props.board);
-    console.log('TARGET', e.target.id, this.id);
     if (e.target.id === this.props.board.selectedStory.id) {
-      this.props.firebase.remove(`${boardName}/selectedStory`);
-      this.selectStory();
+      this.props.firebase
+        .remove(`${boardName}/selectedStory`)
+        .then(() => this.selectStory());
     }
   };
 

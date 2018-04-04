@@ -24,17 +24,23 @@ class CardsContainer extends React.Component {
   }
 
   render() {
+    const { theme } = this.props.board;
+
     let CardList;
 
-    if (this.props.board.theme === 'dragonBall') {
+    if (theme === 'dragonBall') {
       CardList = DragonballCards;
-    } else if (this.props.board.theme === 'simpsons') {
+    } else if (theme === 'simpsons') {
       CardList = SimpsonsCards;
-    } else {
+    } else if (theme === 'fibonacci') {
       CardList = FibonacciCards;
     }
-
-    return <Cards handleClick={this.handleClick} CardList={CardList} />;
+    return (
+      <Cards
+        handleClick={this.handleClick}
+        CardList={CardList ? CardList : []}
+      />
+    );
   }
 }
 

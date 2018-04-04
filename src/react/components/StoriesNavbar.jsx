@@ -53,9 +53,9 @@ export default ({
             {stories &&
               stories.map((story, index) => (
                 <NavLink key={index}>
-                  <div onClick={() => fnSelectStory(story)}>
+                  <span onClick={() => fnSelectStory(story)}>
                     {story.storyName}
-                  </div>
+                  </span>
                   <Button
                     onClick={handleClick}
                     id={story.id}

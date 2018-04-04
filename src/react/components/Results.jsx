@@ -13,7 +13,7 @@ export default (users) => (
                         <button className='xop-box xop-img'>
                         <h1>{user.card}</h1>
                         </button>
-                        <h2>{user.name}</h2>
+                        <h5>{user.name}</h5>
                     </li>
                 ))}
             </ul> 
