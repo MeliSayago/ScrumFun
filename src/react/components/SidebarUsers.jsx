@@ -10,8 +10,9 @@ export default ({ users, currentUrl }) => (
           {user.name}
         </Badge>
       ))}
-      <Link to={`/${currentUrl}/storyresults`}>
-        <button>Show Result</button>
+      <br/>
+      <Link to={`/${currentUrl}/results`}>
+        <button className="center" >Show Result</button>
       </Link>
   </div>
 );

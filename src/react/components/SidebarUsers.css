@@ -8,3 +8,8 @@
   justify-content: center;
   font-size: 150%;
 }
+
+.center {
+  position: relative;
+  left: 46%;
+}
