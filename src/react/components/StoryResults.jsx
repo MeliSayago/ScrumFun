@@ -1,9 +1,10 @@
 import React from 'react';
 import { ButtonToolbar, Button } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 export default ({ cardModa, story, handleClickButton, nextStory, voteAgain }) =>
   cardModa ? (
     <div>
+      {console.log('story', story.id)}
       <h1>{story.storyName}</h1>
       <div>
         <ul className="xop-grid">
@@ -24,15 +25,16 @@ export default ({ cardModa, story, handleClickButton, nextStory, voteAgain }) =>
         </ul>
       </div>
       <ButtonToolbar>
-        {story.card ? (
-          <Button name="nextStory" onClick={() => nextStory(story.id)}>
+        <Link to={'/test/game'}>
+          <Button
+            name="nextStory"
+            id="nextStory"
+            // onClick={() => nextStory()}
+            disabled="true"
+          >
             Proxima historia
           </Button>
-        ) : (
-          <Button name="nextStory" disabled={true}>
-            Proxima historia
-          </Button>
-        )}
+        </Link>
 
         <Button name="voteAgain" onClick={() => voteAgain()}>
           Votar de vuelta
