@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import StoriesNavbar from '../components/StoriesNavbar';
-import Stories from '../components/Stories'
+import Stories from '../components/Stories';
 
 class StoriesContainer extends React.Component {
   constructor() {
@@ -32,7 +32,6 @@ class StoriesContainer extends React.Component {
   };
 
   handleClick = e => {
-    console.log("acaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",e.target.id)
     const boardName = this.props.match.params.boardname;
     this.props.firebase.remove(`${boardName}/stories/${e.target.id}`);
     if (e.target.id === this.props.board.selectedStory.id) {
@@ -43,7 +42,6 @@ class StoriesContainer extends React.Component {
   };
 
   fnSelectStory = selectedStory => {
-    console.log(selectedStory);
     const boardName = this.props.match.params.boardname;
     this.props.firebase.set(`${boardName}/selectedStory`, selectedStory);
   };
@@ -78,10 +76,11 @@ class StoriesContainer extends React.Component {
           id: storyId,
         }))
       : [];
-      
+
     if (isLoaded(this.props.board) && !this.props.board.selectedStory) {
       this.selectStory();
     }
+
     return (
       <div>
         <Stories
@@ -103,7 +102,6 @@ export default compose(
     { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
   ]),
   connect((state, props) => {
-    console.log(state);
     return {
       board: state.firebase.data[props.match.params.boardname] || {},
     };

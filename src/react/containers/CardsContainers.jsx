@@ -17,10 +17,18 @@ class CardsContainer extends React.Component {
 
   handleClick(card) {
     const boardName = this.props.match.params.boardname;
-    this.props.firebase.set(
-      `/${boardName}/users/${this.props.userId}/card`,
-      card,
-    );
+
+    if (this.scrumList.length && this.scrumList[0].id === this.props.userId) {
+      this.props.firebase.set(
+        `${boardName}/scrumMaster/${this.props.userId}/card`,
+        card,
+      );
+    } else {
+      this.props.firebase.set(
+        `${boardName}/users/${this.props.userId}/card`,
+        card,
+      );
+    }
   }
 
   render() {
@@ -35,6 +43,13 @@ class CardsContainer extends React.Component {
     } else if (theme === 'fibonacci') {
       CardList = FibonacciCards;
     }
+
+    this.scrumList = this.props.board.scrumMaster
+      ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
+          ...this.props.board.scrumMaster[scrumId],
+          id: scrumId,
+        }))
+      : [];
     return (
       <Cards
         handleClick={this.handleClick}
@@ -46,7 +61,8 @@ class CardsContainer extends React.Component {
 
 export default compose(
   firebaseConnect(props => [
-    { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/users` },
+    { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
     { path: `${props.match.params.boardname}` },
   ]),
   connect((state, props) => ({
