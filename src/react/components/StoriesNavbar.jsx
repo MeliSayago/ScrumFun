@@ -43,7 +43,6 @@ export default ({
                     label="newStory"
                     placeholder="Story Name"
                   />
-                  {/* <button>Submit</button> */}
                 </FormGroup>
               </form>
             </NavLink>
@@ -53,11 +52,12 @@ export default ({
             {stories &&
               stories.map((story, index) => (
                 <NavLink key={index}>
-                  <span onClick={() => fnSelectStory(story)}>
+                  <span onClick={() => !story.card && fnSelectStory(story)}>
                     {story.storyName}
                   </span>
                   <Button
-                    onClick={handleClick}
+                    onClick={() => !story.card && handleClick()}
+                    disabled={Boolean(story.card)}
                     id={story.id}
                     value={story.storyName}
                     bsStyle="danger float-right"
