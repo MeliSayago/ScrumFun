@@ -1,13 +1,3 @@
-export const StoryIncompleted = function(storiesList) {
-  var story;
-  for (var i = 0; i < storiesList.length; i++) {
-    if (storiesList[i].completed === false) {
-      story = storiesList[i];
-    }
-  }
-  return story;
-};
-
 export const CardList = function(usersList) {
   var cardsList = [];
   for (var i = 0; i < usersList.length; i++) {

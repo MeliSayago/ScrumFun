@@ -14,24 +14,40 @@ import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoad: false };
+    this.state = { active: true, selectedCard: '' };
     this.handleClickButton = this.handleClickButton.bind(this);
     this.nextStory = this.nextStory.bind(this);
     this.voteAgain = this.voteAgain.bind(this);
   }
 
-  handleClickButton(storyId, card) {
-    const boardName = this.props.match.params.boardname;
-    this.props.firebase.set(`/${boardName}/stories/${storyId}/card`, card);
-    document.getElementById('nextStory').removeAttribute('disabled');
+  handleClickButton(card) {
+    card = Number(card);
+    this.setState({ selectedCard: card });
+    this.setState({ active: false });
   }
 
-  nextStory() {
+  nextStory(storyId) {
     const boardName = this.props.match.params.boardname;
-    this.props.history.push(`/${boardName}/game`);
+    this.props.firebase
+      .set(`${boardName}/stories/${storyId}/card`, this.state.selectedCard)
+      .then(() => this.props.firebase.remove(`${boardName}/selectedStory`))
+      .then(() =>
+        this.usersList.forEach(user =>
+          this.props.firebase.remove(`${boardName}/users/${user.id}/card`),
+        ),
+      )
+      .then(() =>
+        this.props.history.push(`/${this.props.match.params.boardname}/game`),
+      );
   }
 
   voteAgain() {
+    this.usersList.forEach(user =>
+      this.props.firebase.remove(
+        `${this.props.match.params.boardname}/users/${user.id}/card`,
+      ),
+    );
+
     this.props.history.push(`/${this.props.match.params.boardname}/game`);
   }
 
@@ -42,7 +58,7 @@ class StoryResultsContainer extends React.Component {
           id: storyId,
         }))
       : [];
-    const usersList = this.props.board.users
+    this.usersList = this.props.board.users
       ? Object.keys(this.props.board.users).map(userId => ({
           ...this.props.board.users[userId],
           id: userId,
@@ -51,7 +67,9 @@ class StoryResultsContainer extends React.Component {
 
     var card = !isLoaded(this.props.board)
       ? 'Loading'
-      : isEmpty(this.props.board) ? undefined : Moda(CardList(usersList));
+      : isEmpty(this.props.board) ? undefined : Moda(CardList(this.usersList));
+
+    console.log('usersList', this.usersList);
 
     return (
       <StoryResults
@@ -62,6 +80,7 @@ class StoryResultsContainer extends React.Component {
         handleClickButton={this.handleClickButton}
         nextStory={this.nextStory}
         voteAgain={this.voteAgain}
+        active={this.state.active}
       />
     );
   }
@@ -69,7 +88,9 @@ class StoryResultsContainer extends React.Component {
 
 export default compose(
   firebaseConnect(props => [
-    { path: `${props.match.params.boardname}` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/stories` },
+    { path: `${props.match.params.boardname}/selectedStory` },
+    { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},

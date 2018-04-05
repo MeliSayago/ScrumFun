@@ -42,6 +42,7 @@ class StoriesContainer extends React.Component {
   };
 
   fnSelectStory = selectedStory => {
+    console.log(selectedStory);
     const boardName = this.props.match.params.boardname;
     this.props.firebase.set(`${boardName}/selectedStory`, selectedStory);
   };
@@ -53,16 +54,20 @@ class StoriesContainer extends React.Component {
   };
 
   defaultStory(story) {
+    if (story.card == 0) {
+      return false;
+    }
     return !story.card;
   }
 
   selectStory() {
-    console.log('STORIES LIST', this.storiesList);
     var selectedStory = this.storiesList.filter(this.defaultStory);
+
     if (selectedStory.length) {
       const boardName = this.props.match.params.boardname;
       this.props.firebase.set(`${boardName}/selectedStory`, selectedStory[0]);
     }
+    return selectedStory[0];
   }
 
   render() {
@@ -76,9 +81,7 @@ class StoriesContainer extends React.Component {
     if (isLoaded(this.props.board) && !this.props.board.selectedStory) {
       this.selectStory();
     }
-
-    console.log('select', this.props.board.selectedStory);
-
+    console.log('board', this.props.board);
     return (
       <div>
         <StoriesNavbar
@@ -97,8 +100,12 @@ class StoriesContainer extends React.Component {
 export default compose(
   firebaseConnect(props => [
     { path: `${props.match.params.boardname}/stories` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
   ]),
-  connect((state, props) => ({
-    board: state.firebase.data[props.match.params.boardname] || {},
-  })),
+  connect((state, props) => {
+    console.log(state);
+    return {
+      board: state.firebase.data[props.match.params.boardname] || {},
+    };
+  }),
 )(StoriesContainer);
