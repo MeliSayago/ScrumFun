@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import RegisterUser from '../components/RegisterUser';
 import { firebaseConnect, withFirebase } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 class RegisterUserContainer extends Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class RegisterUserContainer extends Component {
   }
 
   handleClick() {
-    alert("Copiado!")
+    alert('Copiado!');
   }
 
   onChange(e) {
@@ -23,34 +25,38 @@ class RegisterUserContainer extends Component {
       [e.target.name]: e.target.value,
     });
   }
-  
+
   onSubmit(e) {
     e.preventDefault();
     const boardName = this.props.match.params.boardname;
-    if(this.state.rol == 'Developer'){
+    if (this.state.rol == 'Developer') {
       this.props.firebase
         .auth()
         .signInAnonymously()
         .then(data =>
-          this.props.firebase.set(`/${boardName}/users/${data.uid}`, this.state),
+          this.props.firebase.set(
+            `/${boardName}/users/${data.uid}`,
+            this.state,
+          ),
         );
-    }else{
+    } else {
       this.props.firebase
         .auth()
         .signInAnonymously()
         .then(data =>
-          this.props.firebase.set(`/${boardName}/Scrum Master/`, this.state),
+          this.props.firebase.set(
+            `/${boardName}/scrumMaster/${data.uid}`,
+            this.state,
+          ),
         );
     }
-      this.props.history.push(`/${boardName}/game`);
+    this.props.history.push(`/${boardName}/game`);
   }
 
- 
-    
-
-
   render() {
-    const copyUrl = `http://localhost:3000${this.props.location.pathname}`
+    const copyUrl = `http://localhost:3000${this.props.location.pathname}`;
+
+    console.log('users', this.props.board.users);
     return (
       <RegisterUser
         handleClick={this.handleClick}
@@ -62,4 +68,12 @@ class RegisterUserContainer extends Component {
     );
   }
 }
-export default withFirebase(RegisterUserContainer);
+
+export default compose(
+  firebaseConnect(props => [
+    { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
+  ]),
+  connect((state, props) => ({
+    board: state.firebase.data[props.match.params.boardname] || {},
+  })),
+)(RegisterUserContainer);

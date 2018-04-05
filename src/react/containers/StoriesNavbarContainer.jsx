@@ -42,7 +42,6 @@ class StoriesContainer extends React.Component {
   };
 
   fnSelectStory = selectedStory => {
-    console.log(selectedStory);
     const boardName = this.props.match.params.boardname;
     this.props.firebase.set(`${boardName}/selectedStory`, selectedStory);
   };
@@ -81,7 +80,7 @@ class StoriesContainer extends React.Component {
     if (isLoaded(this.props.board) && !this.props.board.selectedStory) {
       this.selectStory();
     }
-    console.log('board', this.props.board);
+
     return (
       <div>
         <StoriesNavbar
@@ -103,7 +102,6 @@ export default compose(
     { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
   ]),
   connect((state, props) => {
-    console.log(state);
     return {
       board: state.firebase.data[props.match.params.boardname] || {},
     };

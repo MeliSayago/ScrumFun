@@ -21,7 +21,6 @@ class StoryResultsContainer extends React.Component {
   }
 
   handleClickButton(card) {
-    card = Number(card);
     this.setState({ selectedCard: card });
     this.setState({ active: false });
   }
@@ -68,8 +67,6 @@ class StoryResultsContainer extends React.Component {
     var card = !isLoaded(this.props.board)
       ? 'Loading'
       : isEmpty(this.props.board) ? undefined : Moda(CardList(this.usersList));
-
-    console.log('usersList', this.usersList);
 
     return (
       <StoryResults

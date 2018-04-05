@@ -17,7 +17,6 @@ class GameContainer extends React.Component {
 
   
   render() {
-    console.log(this.props.board)
     const theme = {
       dragonBall: "url('http://images.pushsquare.com/news/2015/08/dragon_ball_xenoverse_dares_you_to_take_part_in_its_huge_online_tournament/attachment/0/original.jpg')",
       simpsons: "url('http://i.ngenespanol.com/dam/tbg/traveler/lugares/18/02/07/springfield-los-simpson-p.png.imgw.1280.1280.png')",
