@@ -21,6 +21,7 @@ class StoryResultsContainer extends React.Component {
   }
 
   handleClickButton(card) {
+    // card = Number(card);
     this.setState({ selectedCard: card });
     this.setState({ active: false });
   }

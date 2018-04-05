@@ -1,46 +1,63 @@
-import React from 'react';
-import {
-  FormControl,
-  FormGroup,
-  ListGroupItem,
-  ListGroup,
-  Button,
-} from 'react-bootstrap';
-
-export default ({ handleClick, handleSubmit, stories, buttonClick }) => (
-  <div className="fixed-top">
-    <button className="btn btn-danger float-left" onClick={buttonClick}>
-      Close
-    </button>
-    <h1>Storie name</h1>
-    <form onSubmit={handleSubmit}>
-      <FormGroup>
-        <FormControl
-          id="formControlsText"
-          type="text"
-          name="storyName"
-          label="newStory"
-          placeholder="Story Name"
-        />
-        {/* <button>Submit</button> */}
-      </FormGroup>
-    </form>
-    <div>
-      <ListGroup>
-        {stories.map((story, index) => (
-          <ListGroupItem key={index}>
+import React from 'react'
+import {FormControl,Button,ListGroup,ListGroupItem} from 'react-bootstrap'
+export default({  
+  handleClick,
+  handleSubmit,
+  stories,
+  toggleNavbar,
+  state,
+  selectStory,
+  fnSelectStory,
+}) => (
+  <div>
+    <div className="top">
+      <h3>{selectStory ? selectStory.storyName : 'No stories!'}</h3>
+      <form onSubmit={handleSubmit}>
+          <FormControl
+            id="formControlsText"
+            type="text"
+            name="storyName"
+            label="newStory"
+            placeholder="Story Name"
+          />
+      </form>
+    </div>
+    <div className="up">
+    <ListGroup>
+      {stories &&
+      stories.map((story, index) => {
+        console.log(story)
+        if(!story.card){
+          return(<ListGroupItem>
+          <span onClick={() => !story.card && fnSelectStory(story)}>
             {story.storyName}
-            <Button
-              onClick={handleClick}
-              id={story.id}
-              value={story.storyName}
-              bsStyle="danger float-right"
+          </span>
+          <Button
+            onClick={(e) => !story.card && handleClick(e)}
+            disabled={Boolean(story.card)}
+            id={story.id}
+            value={story.storyName}
+            bsStyle="danger float-right"
             >
-              Delete
-            </Button>
-          </ListGroupItem>
-        ))}
+            Delete
+          </Button>
+        </ListGroupItem>)}
+      })}
+      </ListGroup>
+    </div>
+    <h4>Voted stories:</h4>
+    <div className="down">
+      <ListGroup>
+        {stories &&
+        stories.map((story, index) => {
+          if(story.card){
+            return(<ListGroupItem>
+            <span>
+              {story.storyName}
+            </span>
+          </ListGroupItem>)}
+        })}
       </ListGroup>
     </div>
   </div>
-);
+)

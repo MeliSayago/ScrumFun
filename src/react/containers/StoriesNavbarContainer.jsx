@@ -1,5 +1,4 @@
 import React from 'react';
-// import Stories from '../components/Stories';
 import {
   firebaseConnect,
   withFirebase,
@@ -9,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import StoriesNavbar from '../components/StoriesNavbar';
+import Stories from '../components/Stories';
 
 class StoriesContainer extends React.Component {
   constructor() {
@@ -83,7 +83,7 @@ class StoriesContainer extends React.Component {
 
     return (
       <div>
-        <StoriesNavbar
+        <Stories
           state={this.state}
           toggleNavbar={this.toggleNavbar}
           handleClick={this.handleClick}

@@ -1,4 +1,6 @@
-
+.sidebar{
+    width: auto;
+}
 .storyFont {
     font-size: 20px;
     font-weight: 999;

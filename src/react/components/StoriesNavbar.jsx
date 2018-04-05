@@ -24,13 +24,13 @@ export default ({
   selectStory,
   fnSelectStory,
 }) => (
-  <div>
+  <div className="sidebar">
     <Navbar color="faded" light>
       <NavbarBrand className="mr-auto">
-        {selectStory ? selectStory.storyName : 'no hay historias'}
+        {selectStory ? selectStory.storyName : 'No stories!'}
       </NavbarBrand>
-      <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-      <Collapse isOpen={!state.collapsed} navbar>
+      {/* <NavbarToggler onClick={toggleNavbar} className="mr-2" /> */}
+      <Collapse isOpen={true} navbar>
         <Nav navbar>
           <NavItem>
             <NavLink>
