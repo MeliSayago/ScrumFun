@@ -14,22 +14,26 @@ import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoad: false };
+    this.state = { active: true, selectedCard: '' };
     this.handleClickButton = this.handleClickButton.bind(this);
     this.nextStory = this.nextStory.bind(this);
     this.voteAgain = this.voteAgain.bind(this);
   }
 
-  handleClickButton(storyId, card) {
-    const boardName = this.props.match.params.boardname;
-    this.props.firebase.set(`/${boardName}/stories/${storyId}/card`, card);
-    document.getElementById('nextStory').removeAttribute('disabled');
+  handleClickButton(card) {
+    card = Number(card);
+    this.setState({ selectedCard: card });
+    this.setState({ active: false });
   }
 
-  nextStory() {
+  nextStory(storyId) {
     const boardName = this.props.match.params.boardname;
-    this.props.history.push(`/${boardName}/game`);
-    console.log('holaaaaa');
+    this.props.firebase
+      .set(`${boardName}/stories/${storyId}/card`, this.state.selectedCard)
+      .then(() => this.props.firebase.remove(`${boardName}/selectedStory`))
+      .then(() =>
+        this.props.history.push(`/${this.props.match.params.boardname}/game`),
+      );
   }
 
   voteAgain() {
@@ -63,6 +67,7 @@ class StoryResultsContainer extends React.Component {
         handleClickButton={this.handleClickButton}
         nextStory={this.nextStory}
         voteAgain={this.voteAgain}
+        active={this.state.active}
       />
     );
   }
