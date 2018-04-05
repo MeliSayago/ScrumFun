@@ -1,5 +1,4 @@
 import React from 'react';
-// import Stories from '../components/Stories';
 import {
   firebaseConnect,
   withFirebase,
@@ -9,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import StoriesNavbar from '../components/StoriesNavbar';
+import Stories from '../components/Stories'
 
 class StoriesContainer extends React.Component {
   constructor() {
@@ -32,6 +32,7 @@ class StoriesContainer extends React.Component {
   };
 
   handleClick = e => {
+    console.log("acaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",e.target.id)
     const boardName = this.props.match.params.boardname;
     this.props.firebase.remove(`${boardName}/stories/${e.target.id}`);
     if (e.target.id === this.props.board.selectedStory.id) {
@@ -77,14 +78,13 @@ class StoriesContainer extends React.Component {
           id: storyId,
         }))
       : [];
-
+      
     if (isLoaded(this.props.board) && !this.props.board.selectedStory) {
       this.selectStory();
     }
-    console.log('board', this.props.board);
     return (
       <div>
-        <StoriesNavbar
+        <Stories
           state={this.state}
           toggleNavbar={this.toggleNavbar}
           handleClick={this.handleClick}

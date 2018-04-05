@@ -6,18 +6,47 @@ import { compose } from 'redux';
 import StoriesNavbarContainer from './StoriesNavbarContainer'
 import CardsContainer from './CardsContainers'
 import SidebarUsersContainer from './SidebarUsersContainer'
+import Sidebar from 'react-sidebar';
 
+const mql = window.matchMedia(`(min-width: 800px)`);
 
 class GameContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      mql: mql,
+      docked: props.docked,
+      open: props.open
     };
+    this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+  }
+  
+  onSetSidebarOpen(open) {
+    this.setState({sidebarOpen: open});
   }
 
-  
+  componentWillMount() {
+    mql.addListener(this.mediaQueryChanged);
+    this.setState({mql: mql, sidebarDocked: mql.matches});
+  }
+
+  componentWillUnmount() {
+    this.state.mql.removeListener(this.mediaQueryChanged);
+  }
+
+  mediaQueryChanged() {
+    this.setState({sidebarDocked: this.state.mql.matches});
+  }
+
   render() {
-    console.log(this.props.board)
+    var sidebarContent = <StoriesNavbarContainer {...this.props}/>
+    var sidebarProps = {
+      sidebar: this.state.sidebarOpen,
+      docked: this.state.sidebarDocked,
+      onSetOpen: this.onSetSidebarOpen
+    }
+
     const theme = {
       dragonBall: "url('http://images.pushsquare.com/news/2015/08/dragon_ball_xenoverse_dares_you_to_take_part_in_its_huge_online_tournament/attachment/0/original.jpg')",
       simpsons: "url('http://i.ngenespanol.com/dam/tbg/traveler/lugares/18/02/07/springfield-los-simpson-p.png.imgw.1280.1280.png')",
@@ -31,18 +60,17 @@ class GameContainer extends React.Component {
     }else if(this.props.board.theme ){back = theme.fibonacci}
       
     return (
+      <Sidebar sidebar={sidebarContent}
+               open={this.state.sidebarOpen}
+               docked={this.state.sidebarDocked}
+               onSetOpen={this.onSetSidebarOpen}
+               style={{width:"90%"}}>
         <div style={{backgroundImage:back,backgroundSize:"100% 100%"}}>
-            <div>
-            <StoriesNavbarContainer {...this.props}/> 
-            </div>
-            <div>
-            <CardsContainer {...this.props}/>
-            </div>
-            <div>
-            <SidebarUsersContainer {...this.props}/>
-            </div>
+          <CardsContainer {...this.props}/>
+          <SidebarUsersContainer {...this.props}/>
         </div>   
-        )
+      </Sidebar>
+      )
   }
 }
 
