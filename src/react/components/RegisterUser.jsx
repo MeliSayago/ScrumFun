@@ -2,9 +2,9 @@ import React from 'react';
 import './RegisterUser.css';
 import {ButtonToolbar,DropdownButton,MenuItem} from 'react-bootstrap'
 import Clipboard from 'react-clipboard.js';
+import Popover from 'react-simple-popover';
 
-
-export default ({ onChange, state, onSubmit,copyUrl }) => {
+export default ({ onChange, state, onSubmit,copyUrl,handleClick }) => {
   return (
     <div className="text-center auth-form mx-auto">
       <form className="form-signin" onSubmit={onSubmit}>
@@ -26,10 +26,10 @@ export default ({ onChange, state, onSubmit,copyUrl }) => {
           <option>Scrum Master</option>
         </select>
         <br/>
-        <Clipboard data-clipboard-text={copyUrl}>
+        <Clipboard onClick={handleClick} data-clipboard-text={copyUrl}>
           copy Url
         </Clipboard>
-       
+
         <button
           className="btn btn-lg btn-primary btn-block"
           type="submit"

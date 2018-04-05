@@ -7,10 +7,15 @@ class RegisterUserContainer extends Component {
     super(props);
     this.state = {
       name: '',
-      rol: '',
+      rol: 'Developer',
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    alert("Copiado!")
   }
 
   onChange(e) {
@@ -48,6 +53,7 @@ class RegisterUserContainer extends Component {
     const copyUrl = `http://localhost:3000${this.props.location.pathname}`
     return (
       <RegisterUser
+        handleClick={this.handleClick}
         copyUrl={copyUrl}
         onChange={this.onChange}
         state={this.state}

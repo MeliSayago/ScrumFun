@@ -88,7 +88,7 @@ const DragonballCards = [
     {
         id: 4,
         points: 2,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvUHbb8MT0vcd433I1gipUzbVatas2dOSL_R4u5sUcTupWkx2c'
+        img: 'http://xombitgames.com/files/2015/03/Super-Saiyan-2.jpg'
     },
     {
         id: 5,
@@ -98,7 +98,7 @@ const DragonballCards = [
     {
         id: 6,
         points: 5,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfg1WJqXRhuSeQlgFKfhcEDftTDwXZGfd7cwuJq5OQ5tHRlA3V'
+        img: 'https://i.pinimg.com/originals/bd/96/56/bd96565f65351c8d35e8241b4239f211.jpg'
     },
     {
         id: 7,
