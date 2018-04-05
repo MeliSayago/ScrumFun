@@ -39,7 +39,7 @@ class RegisterUserContainer extends Component {
         .auth()
         .signInAnonymously()
         .then(data =>
-          this.props.firebase.set(`/${boardName}/Scrum Master/`, this.state),
+          this.props.firebase.set(`/${boardName}/scrum master/`, this.state),
         );
     }
       this.props.history.push(`/${boardName}/game`);
