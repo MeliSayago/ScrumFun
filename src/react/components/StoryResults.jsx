@@ -29,8 +29,8 @@ export default ({ cardModa, story, handleClickButton, nextStory, voteAgain }) =>
           <Button
             name="nextStory"
             id="nextStory"
-            // onClick={() => nextStory()}
-            disabled="true"
+             onClick={() => nextStory()}
+            disabled="false"
           >
             Proxima historia
           </Button>

@@ -29,7 +29,6 @@ class StoryResultsContainer extends React.Component {
   nextStory() {
     const boardName = this.props.match.params.boardname;
     this.props.history.push(`/${boardName}/game`);
-    console.log('holaaaaa');
   }
 
   voteAgain() {
