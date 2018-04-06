@@ -72,68 +72,48 @@ const FibonacciCards = [
 const DragonballCards = [
     {
         id: 1,
-        points: 0,
-        img: 'https://cde.laprensa.e3.pe/ima/0/0/1/8/6/186416.jpg'
+        ki: 0,
+        img: 'https://i.pinimg.com/originals/8d/80/7d/8d807d5380601d940824233818b80dca.png'
     },
     {
         id: 2,
-        points: "1/2",
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdlwIFIXM3b8gS_PLPG0raP33M_jTRFxxhpFP7YcLIF_BtWzeZ'
+        ki: 2,
+        img: 'https://img00.deviantart.net/37c2/i/2017/152/c/2/goku_ssj_by_koku78-dbb8ly4.png'
     },
     {
         id: 3,
-        points: 1,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNSMO0sHzbPC_kwa9GwPcqEWkTMh6Q6X-zP-As18xlxJI24-Fx'
+        ki: 3,
+        img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/7/7e/Goku-ssj2.png/revision/latest?cb=20150523175732&path-prefix=es'
     },
     {
         id: 4,
-        points: 2,
-        img: 'http://xombitgames.com/files/2015/03/Super-Saiyan-2.jpg'
+        ki: 4,
+        img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/3/3e/Goku_SSJ3_Render.png/revision/20130708162803?path-prefix=es'
     },
     {
         id: 5,
-        points: 3,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQa9UrxhNqESHZxgsqcw8HfjB84wSzRvqSZQMXwyXy-QnTLfupeg'
+        ki: 5,
+        img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/8/8b/Goku_SSJ_Dios_100%25_%28TC%29.png/revision/latest?cb=20170716222811&path-prefix=es'
     },
     {
         id: 6,
-        points: 5,
-        img: 'https://i.pinimg.com/originals/bd/96/56/bd96565f65351c8d35e8241b4239f211.jpg'
+        ki: 6,
+        img: 'https://i.pinimg.com/originals/a8/c1/ed/a8c1ede3ae53d004579e3a3e15e001e0.png'
     },
     {
         id: 7,
-        points: 8,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiS2O83qr4sK8pdX7Rln3_GO_0AlAZOUDEHh-Qa3fw2kOhgfl03w'
+        ki: 7,
+        img: 'https://pre00.deviantart.net/1729/th/pre/i/2017/119/d/c/goku_ssj_blue_kaioken__3_by_saodvd-db7k30m.png'
     },
     {
         id: 8,
-        points: 13,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS92EHs1J2JoBptT14Dsh5uh_UIJawDJxUCTCWiydgZt1LjA2so'
+        ki: 8,
+        img: 'https://t00.deviantart.net/xxnMfKPgPAHxBD7hSHgLBUPcd1M=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/3456/th/pre/i/2018/052/7/8/son_goku_ultra_instinto_dominado_by_jaredsongohan-dc3xh97.png'
     },
     {
         id: 9,
-        points: 20,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy3irYndsF05s3wQaL0VITGzelJJAQmWr4gZyfGKIi89Fj8awJiw'
-    },
-    {
-        id: 10,
-        points: 40,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyUntdQw6gv7nnpf7iYvNwF-LhBbZibI3UBCzi6VFxwtVS7AWX'
-    },
-    {
-        id: 11,
-        points: 100,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCHZ0KaEHqhNPRu6MjhvpWoXrY-Z6lzysFCqesBpXWVGrSRjLI'
-    },
-    {
-        id: 12,
-        points: "?",
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp84roKe_0xC-aJ_jSEkYp5kes1MdAp4Z7_8NqxgTzYXfQXfGK9Q'
-    },
-    {
-        id: 13,
-        points: "∞",
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmmQmfcQ8Ooxti40qzad9MovCKnJkI6Jk18IlXt6EN7B4_4yNJ'
+        ki: 9,
+        img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/6/6f/Goku_%28SSJ4%29.png/revision/latest?cb=20160619164313&path-prefix=es'
     },
 ]
 
@@ -205,8 +185,48 @@ const SimpsonsCards = [
     },
 ]
 
+const Shirts = [
+    {
+        id: 1,
+        point: 1,
+        size: "XS",
+        img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
+    },
+    {
+        id: 2,
+        point: 2,
+        size: "S",
+        img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
+    },
+    {
+        id: 3,
+        point: 3,
+        size: 'M',
+        img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
+    },
+    {
+        id: 4,
+        point: 4,
+        size: 'L',
+        img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
+    },
+    {
+        id: 5,
+        point: 5,
+        size: 'XL',
+        img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
+    },
+    {
+        id: 6,
+        point: 6,
+        size: 'XXL',
+        img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
+    },
+]
+
 export {
     FibonacciCards,
     DragonballCards,
-    SimpsonsCards
+    SimpsonsCards, 
+    Shirts
 };

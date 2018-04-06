@@ -28,8 +28,16 @@
     width: 100;
     height: 120px;
     cursor: pointer;
+    position: relative;
     border-radius: 10px;
     -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+ }
+
+ .xop-box h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
  }
 
  .xop-box img {
