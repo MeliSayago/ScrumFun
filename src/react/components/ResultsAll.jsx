@@ -14,13 +14,15 @@ const ResultsAll = ({ storiesList }) => (
         <tbody>
             {storiesList.map(story => (
                 <tr>
-                <td>{story.result}</td>
+                <td>{story.card}</td>
                 <td>{story.storyName}</td>
                 </tr>
             ))}
         </tbody>
         </Table>
+    <button >Enviar resultados</button>
     </div>
+
 )
 
 export default ResultsAll;

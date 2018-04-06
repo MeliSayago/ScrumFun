@@ -83,7 +83,6 @@ class StoriesContainer extends React.Component {
       this.selectStory();
     }
     return (
-      <div>
         <Stories
           state={this.state}
           toggleNavbar={this.toggleNavbar}
@@ -93,7 +92,6 @@ class StoriesContainer extends React.Component {
           selectStory={this.props.board.selectedStory}
           fnSelectStory={this.fnSelectStory}
         />
-      </div>
     );
   }
 }

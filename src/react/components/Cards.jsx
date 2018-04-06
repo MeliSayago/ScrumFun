@@ -4,6 +4,9 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 const Cards = ({handleClick, CardList}) => (
     <div className="xop-caption">
+    {/* <a href="#">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </a> */}
         <ul className="xop-grid ">
             {CardList.map((card) => (
                 <li key={card.points}>

@@ -1,5 +1,7 @@
 import React from 'react'
 import {FormControl,Button,ListGroup,ListGroupItem} from 'react-bootstrap'
+import './Stories.css'
+
 export default({  
   handleClick,
   handleSubmit,
@@ -9,8 +11,8 @@ export default({
   selectStory,
   fnSelectStory,
 }) => (
-  <div>
-    <div className="top">
+  <div className="top">
+    <div>
       <h3>{selectStory ? selectStory.storyName : 'No stories!'}</h3>
       <form onSubmit={handleSubmit}>
           <FormControl

@@ -4,7 +4,10 @@ import { connect } from 'react-redux'
 import { compose } from 'redux';
 import ResultsAll from '../components/ResultsAll'
 
+
 class ResultsAllContainer extends React.Component {
+
+    
 
     render(){
         const storiesList = this.props.board.stories 
@@ -12,11 +15,11 @@ class ResultsAllContainer extends React.Component {
         ...this.props.board.stories[storyId], 
         id: storyId})) 
         : []
-        
+
         return(
             <ResultsAll 
             storiesList={storiesList}/>
-            
+
         )
     }
 
