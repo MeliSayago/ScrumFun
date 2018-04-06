@@ -7,6 +7,7 @@ import {
   DragonballCards,
   SimpsonsCards,
   FibonacciCards,
+  Shirts
 } from '../Card/CardList';
 
 class CardsContainer extends React.Component {
@@ -42,6 +43,8 @@ class CardsContainer extends React.Component {
       CardList = SimpsonsCards;
     } else if (theme === 'fibonacci') {
       CardList = FibonacciCards;
+    } else if(theme === 'shirts') {
+      CardList = Shirts
     }
 
     this.scrumList = this.props.board.scrumMaster
