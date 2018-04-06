@@ -1,0 +1,63 @@
+.form-signin {
+    max-width: 550px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.btn-signin{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.xop-section {
+    max-width: 100px;
+    margin: 0 auto;
+    padding: 6% 2%;
+}
+
+.xop-grid {
+    margin: 20px 0 0 0 ;
+    padding: 0;
+    list-style: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.xop-grid:after {
+    clear: both;
+}
+
+.xop-grid li {
+    width: 75px;
+    height: 90px;
+    display: inline-block;
+    margin: 20px;
+}
+
+.xop-box {
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 20px;
+    -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.xop-box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.xop-box:hover{
+    transform: scale(1.05);
+}
+
+.xop-box:focus {
+    border-radius: 20px;
+    border: 2px solid red;
+    outline: none;
+}
+
