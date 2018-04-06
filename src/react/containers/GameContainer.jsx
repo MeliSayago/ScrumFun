@@ -7,6 +7,8 @@ import StoriesNavbarContainer from './StoriesNavbarContainer';
 import CardsContainer from './CardsContainers';
 import SidebarUsersContainer from './SidebarUsersContainer';
 import Sidebar from 'react-sidebar';
+import CountDown from './CountDown';
+import { Link } from 'react-router-dom';
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
@@ -64,6 +66,18 @@ class GameContainer extends React.Component {
       back = theme.fibonacci;
     }
 
+    this.scrumList = this.props.board.scrumMaster
+      ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
+          ...this.props.board.scrumMaster[scrumId],
+          id: scrumId,
+        }))
+      : [];
+
+    const currentUrl = this.props.match.params.boardname;
+
+    console.log('user uid', this.props.userId);
+    console.log('scrum master', this.scrumList);
+
     return (
       <Sidebar
         sidebar={sidebarContent}
@@ -75,6 +89,18 @@ class GameContainer extends React.Component {
         <div style={{ backgroundImage: back, backgroundSize: '100% 100%' }}>
           <CardsContainer {...this.props} />
           <SidebarUsersContainer {...this.props} />
+          {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
+            [
+              <CountDown {...this.props} />,
+              <div>
+                <Link to={`/${currentUrl}/results`}>
+                  <button className="center">Show Result</button>
+                </Link>
+              </div>,
+            ]
+          ) : (
+            <div />
+          )}
         </div>
       </Sidebar>
     );
@@ -84,9 +110,11 @@ class GameContainer extends React.Component {
 export default compose(
   firebaseConnect(props => [
     { path: `${props.match.params.boardname}/stories` },
-    { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/users` },
+    { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
+    userId: state.firebase.auth.uid,
   })),
 )(GameContainer);

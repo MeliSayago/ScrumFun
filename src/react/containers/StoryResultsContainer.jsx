@@ -37,6 +37,13 @@ class StoryResultsContainer extends React.Component {
         ),
       )
       .then(() =>
+        this.scrumList.forEach(user =>
+          this.props.firebase.remove(
+            `${boardName}/scrumMaster/${user.id}/card`,
+          ),
+        ),
+      )
+      .then(() =>
         this.props.history.push(`/${this.props.match.params.boardname}/game`),
       );
   }
@@ -65,9 +72,18 @@ class StoryResultsContainer extends React.Component {
         }))
       : [];
 
+    this.scrumList = this.props.board.scrumMaster
+      ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
+          ...this.props.board.scrumMaster[scrumId],
+          id: scrumId,
+        }))
+      : [];
+
     var card = !isLoaded(this.props.board)
       ? 'Loading'
-      : isEmpty(this.props.board) ? undefined : Moda(CardList(this.usersList));
+      : isEmpty(this.props.board)
+        ? undefined
+        : Moda(CardList(this.usersList.concat(this.scrumList)));
 
     return (
       <StoryResults
@@ -88,7 +104,8 @@ export default compose(
   firebaseConnect(props => [
     { path: `${props.match.params.boardname}/stories` },
     { path: `${props.match.params.boardname}/selectedStory` },
-    { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/users` },
+    { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},

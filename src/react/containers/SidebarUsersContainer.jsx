@@ -11,7 +11,6 @@ class SidebarUsersContainer extends React.Component {
   }
 
   render() {
-    const currentUrl = this.props.match.params.boardname;
     const usersList = this.props.board.users
       ? Object.keys(this.props.board.users).map(userId => ({
           ...this.props.board.users[userId],
@@ -30,7 +29,6 @@ class SidebarUsersContainer extends React.Component {
       <SidebarUsers
         users={usersList}
         state={this.state}
-        currentUrl={currentUrl}
         scrumMasters={scrumList}
       />
     );
