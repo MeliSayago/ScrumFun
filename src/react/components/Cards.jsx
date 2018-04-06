@@ -14,6 +14,7 @@ const Cards = ({handleClick, CardList}) => (
                         <img onClick={()=>handleClick(card.points)} src={card.img} alt="DB"/>
                             <div>
                                 <h1>{card.points}</h1>
+                                <h3>{card.size}</h3>
                                 <h2 className='font'>{card.points}</h2>
                             </div>
                     </button>

@@ -69,8 +69,6 @@ class StoryResultsContainer extends React.Component {
       ? 'Loading'
       : isEmpty(this.props.board) ? undefined : Moda(CardList(this.usersList));
 
-    console.log('usersList', this.usersList);
-
     return (
       <StoryResults
         story={

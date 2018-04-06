@@ -56,7 +56,7 @@ export default ({
                     {story.storyName}
                   </span>
                   <Button
-                    onClick={(e) => !story.card && handleClick(e)}
+                    onClick={e => !story.card && handleClick(e)}
                     disabled={Boolean(story.card)}
                     id={story.id}
                     value={story.storyName}
