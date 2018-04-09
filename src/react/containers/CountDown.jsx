@@ -3,6 +3,9 @@ import React from 'react';
 import Timer from '../components/Timer.jsx';
 import Butons from '../components/Butons.jsx';
 import Input from '../components/Input.jsx';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firebaseConnect } from 'react-redux-firebase';
 
 export default class CountDown extends React.Component {
   constructor(props) {
@@ -11,6 +14,7 @@ export default class CountDown extends React.Component {
       active: false,
       mlsec: 0,
       input: 0,
+      timer: '',
     };
     this.timer = this.timer.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -29,6 +33,10 @@ export default class CountDown extends React.Component {
       });
       clearInterval(this.interval);
     }
+    this.props.firebase.set(
+      `${this.props.match.params.boardname}/timer`,
+      this.state.mlsec,
+    );
   }
   toggle() {
     this.setState(
@@ -56,20 +64,33 @@ export default class CountDown extends React.Component {
         clearInterval(this.interval);
       },
     );
+    this.props.firebase.set(`${this.props.match.params.boardname}/timer`, '00');
   }
   submit(input) {
     this.setState({ input });
   }
   render() {
+    this.scrumList = this.props.board.scrumMaster
+      ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
+          ...this.props.board.scrumMaster[scrumId],
+          id: scrumId,
+        }))
+      : [];
     return (
       <div>
-        <Timer time={this.state.mlsec} />
-        <Butons
-          active={this.state.active}
-          toggle={this.toggle}
-          reset={this.reset}
-        />
-        <Input submit={this.submit} />
+        <Timer time={this.props.board.timer} />
+        {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
+          <div>
+            <Butons
+              active={this.state.active}
+              toggle={this.toggle}
+              reset={this.reset}
+            />
+            <Input submit={this.submit} />
+          </div>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }

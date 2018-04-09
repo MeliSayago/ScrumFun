@@ -56,7 +56,6 @@ class RegisterUserContainer extends Component {
   render() {
     const copyUrl = `http://localhost:3000${this.props.location.pathname}`;
 
-    console.log('users', this.props.board.users);
     return (
       <RegisterUser
         handleClick={this.handleClick}

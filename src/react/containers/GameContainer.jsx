@@ -75,9 +75,6 @@ class GameContainer extends React.Component {
 
     const currentUrl = this.props.match.params.boardname;
 
-    console.log('user uid', this.props.userId);
-    console.log('scrum master', this.scrumList);
-
     return (
       <Sidebar
         sidebar={sidebarContent}
@@ -89,15 +86,13 @@ class GameContainer extends React.Component {
         <div style={{ backgroundImage: back, backgroundSize: '100% 100%' }}>
           <CardsContainer {...this.props} />
           <SidebarUsersContainer {...this.props} />
+          <CountDown {...this.props} />
           {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
-            [
-              <CountDown {...this.props} />,
-              <div>
-                <Link to={`/${currentUrl}/results`}>
-                  <button className="center">Show Result</button>
-                </Link>
-              </div>,
-            ]
+            <div>
+              <Link to={`/${currentUrl}/results`}>
+                <button className="center">Show Result</button>
+              </Link>
+            </div>
           ) : (
             <div />
           )}
@@ -111,7 +106,8 @@ export default compose(
   firebaseConnect(props => [
     { path: `${props.match.params.boardname}/stories` },
     { path: `${props.match.params.boardname}/users` },
-    { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/scrumMaster` },
+    { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
