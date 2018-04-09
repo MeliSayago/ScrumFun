@@ -2,7 +2,6 @@ import React from 'react';
 import './RegisterUser.css';
 import {ButtonToolbar,DropdownButton,MenuItem} from 'react-bootstrap'
 import Clipboard from 'react-clipboard.js';
-import Popover from 'react-simple-popover';
 
 export default ({ onChange, state, onSubmit,copyUrl,handleClick }) => {
   return (
@@ -14,7 +13,7 @@ export default ({ onChange, state, onSubmit,copyUrl,handleClick }) => {
         </label>
         <input
           type="text"
-          id="name"
+          id="myInput"
           name="name"
           className="form-control"
           placeholder="Name"
@@ -26,7 +25,17 @@ export default ({ onChange, state, onSubmit,copyUrl,handleClick }) => {
           <option>Scrum Master</option>
         </select>
         <br/>
-        <Clipboard onClick={handleClick} data-clipboard-text={copyUrl}>
+        {state.rol == 'Scrum Master' ? 
+        <input
+          type="email"
+          id="myInput"
+          name="email"
+          className="form-control"
+          placeholder="e-mail"
+          onChange={onChange}
+        /> 
+        : <br/>}
+        <Clipboard onClick={handleClick} data-clipboard-text={document.getElementById("myInput")}>
           copy Url
         </Clipboard>
 

@@ -2,7 +2,8 @@ import React from 'react'
 import './ResultsAll.css'
 import { Table, ListGroupItem} from 'reactstrap';
 
-const ResultsAll = ({ storiesList }) => (
+
+const ResultsAll = ({ storiesList,sendEmail,dropDB }) => (
     <div>
         <Table responsive>
         <thead>
@@ -20,7 +21,8 @@ const ResultsAll = ({ storiesList }) => (
             ))}
         </tbody>
         </Table>
-    <button >Enviar resultados</button>
+    <button onClick={(e) => sendEmail(e)}>Enviar resultados</button>
+    <button onClick={dropDB}>Delete</button>
     </div>
 
 )

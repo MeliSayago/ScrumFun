@@ -3,23 +3,68 @@ import { firebaseConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux'
 import { compose } from 'redux';
 import ResultsAll from '../components/ResultsAll'
-
+import axios from 'axios'
 
 class ResultsAllContainer extends React.Component {
+    constructor(props){
+        super(props);
+    this.sendEmail = this.sendEmail.bind(this);
+    this.dropDB = this.dropDB.bind(this);
+    }
 
-    
-
-    render(){
-        const storiesList = this.props.board.stories 
+    sendEmail(e){
+        const storiesList = this.props.board.stories
         ? Object.keys(this.props.board.stories).map(storyId => ({
         ...this.props.board.stories[storyId], 
-        id: storyId})) 
+        id: storyId}))
+        : []
+        let text = ""
+        storiesList.map(story => {
+            text += `Story: ${story.storyName}, Card: ${story.card}.
+             `
+        })
+        const scrumMasterList = this.props.board.scrumMaster
+        ? Object.keys(this.props.board.scrumMaster).map(scrumMasterId => ({
+        ...this.props.board.scrumMaster[scrumMasterId], 
+        id: scrumMasterId}))
+        : []
+        console.log(scrumMasterList)
+        let mails = ''
+        scrumMasterList.map(scrumMaster => {
+            mails += `${scrumMaster.email}`
+        })
+        const body ={
+            mail:mails,
+            text:text
+        }
+
+    axios.post('http://localhost:8080/mail',body)
+        .then(function (response) {
+            console.log("rsp",response);
+        })
+        .catch(function (error) {
+            console.log("err",error);
+        });
+
+    }
+    
+    dropDB(){
+        this.props.firebase.remove(`${this.props.match.params.boardname}`)
+    }
+
+    render(){
+        const storiesList = this.props.board.stories
+        ? Object.keys(this.props.board.stories).map(storyId => ({
+        ...this.props.board.stories[storyId], 
+        id: storyId}))
         : []
 
         return(
             <ResultsAll 
-            storiesList={storiesList}/>
-
+            storiesList={storiesList}
+            sendEmail={this.sendEmail}
+            dropDB={this.dropDB}
+            />
         )
     }
 
