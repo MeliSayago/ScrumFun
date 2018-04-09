@@ -11,7 +11,7 @@ import { compose } from 'redux';
 
 import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 
-class StoryResultsContainer extends React.Component {
+export default class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { active: true, selectedCard: '' };
@@ -34,6 +34,14 @@ class StoryResultsContainer extends React.Component {
       .then(() =>
         this.usersList.forEach(user =>
           this.props.firebase.remove(`${boardName}/users/${user.id}/card`),
+        ),
+      )
+
+      .then(() =>
+        this.scrumList.forEach(user =>
+          this.props.firebase.remove(
+            `${boardName}/scrumMaster/${user.id}/card`,
+          ),
         ),
       )
       .then(() =>
@@ -65,9 +73,18 @@ class StoryResultsContainer extends React.Component {
         }))
       : [];
 
+    this.scrumList = this.props.board.scrumMaster
+      ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
+          ...this.props.board.scrumMaster[scrumId],
+          id: scrumId,
+        }))
+      : [];
+
     var card = !isLoaded(this.props.board)
       ? 'Loading'
-      : isEmpty(this.props.board) ? undefined : Moda(CardList(this.usersList));
+      : isEmpty(this.props.board)
+        ? undefined
+        : Moda(CardList(this.usersList.concat(this.scrumList)));
 
     return (
       <StoryResults
@@ -83,14 +100,3 @@ class StoryResultsContainer extends React.Component {
     );
   }
 }
-
-export default compose(
-  firebaseConnect(props => [
-    { path: `${props.match.params.boardname}/stories` },
-    { path: `${props.match.params.boardname}/selectedStory` },
-    { path: `${props.match.params.boardname}/users` }, // string equivalent 'todos'
-  ]),
-  connect((state, props) => ({
-    board: state.firebase.data[props.match.params.boardname] || {},
-  })),
-)(StoryResultsContainer);

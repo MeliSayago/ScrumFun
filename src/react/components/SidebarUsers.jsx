@@ -1,6 +1,6 @@
 import React from 'react';
 import './SidebarUsers.css';
-import { Link } from 'react-router-dom';
+
 import { Badge } from 'react-bootstrap';
 
 export default ({ users, currentUrl, scrumMasters }) => (
@@ -17,8 +17,5 @@ export default ({ users, currentUrl, scrumMasters }) => (
         {user.name}
       </Badge>
     ))}
-    <Link to={`/${currentUrl}/results`}>
-      <button className="center">Show Result</button>
-    </Link>
   </div>
 );
