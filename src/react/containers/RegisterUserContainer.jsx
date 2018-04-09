@@ -10,6 +10,7 @@ class RegisterUserContainer extends Component {
     this.state = {
       name: '',
       rol: 'Developer',
+      email:''
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);

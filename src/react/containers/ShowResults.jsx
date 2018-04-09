@@ -9,17 +9,13 @@ import StoryResultContainer from './StoryResultsContainer';
 class ResultsContainer extends React.Component {
   constructor(props) {
     super(props);
-  }
-
+    }
+  
   render() {
     return (
       <div>
-        <div>
-          <Results {...this.props} />
-        </div>
-        <div>
-          <StoryResultContainer {...this.props} />
-        </div>
+          <Results {...this.props}/>
+          <StoryResultContainer {...this.props}/>
       </div>
     );
   }
