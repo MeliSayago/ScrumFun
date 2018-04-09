@@ -4,33 +4,33 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import Results from './ResultsContainer';
-import StoryResultContainer from './StoryResultsContainer'
+import StoryResultContainer from './StoryResultsContainer';
 
 class ResultsContainer extends React.Component {
   constructor(props) {
     super(props);
-    }
+  }
 
-  
   render() {
     return (
+      <div>
         <div>
-        <div>
-            <Results {...this.props}/>
+          <Results {...this.props} />
         </div>
         <div>
-            
-            <StoryResultContainer {...this.props}/>
+          <StoryResultContainer {...this.props} />
         </div>
-        </div>
-    )
+      </div>
+    );
   }
 }
 
 export default compose(
   firebaseConnect(props => [
+    { path: `${props.match.params.boardname}/stories` },
     { path: `${props.match.params.boardname}/users` },
-    { path: `${props.match.params.boardname}/stories` } // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/scrumMaster` },
+    { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
