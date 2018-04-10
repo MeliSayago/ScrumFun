@@ -22,6 +22,13 @@ class GameContainer extends React.Component {
     };
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.board.status === 'storyResults') {
+      this.props.history.push(`/${this.props.match.params.boardname}/results`);
+    }
   }
 
   onSetSidebarOpen(open) {
@@ -39,6 +46,13 @@ class GameContainer extends React.Component {
 
   mediaQueryChanged() {
     this.setState({ sidebarDocked: this.state.mql.matches });
+  }
+
+  changeStatus() {
+    this.props.firebase.set(
+      `${this.props.match.params.boardname}/status`,
+      'storyResults',
+    );
   }
 
   render() {
