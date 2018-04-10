@@ -86,7 +86,7 @@ class GameContainer extends React.Component {
         onSetOpen={this.onSetSidebarOpen}
         style={{ width: '90%' }}
       >
-        <div style={{ backgroundImage: back, backgroundSize: '100% 100%' }}>
+        <div style={{ backgroundImage: back, backgroundSize: '100% auto', height: '100%'}}>
           <CardsContainer {...this.props} />
           <SidebarUsersContainer {...this.props} />
           {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
