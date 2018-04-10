@@ -18,13 +18,13 @@ class CardsContainer extends React.Component {
 
   handleClick(card) {
     const boardName = this.props.match.params.boardname;
-
+    
     if (this.scrumList.length && this.scrumList[0].id === this.props.userId) {
       this.props.firebase.set(
         `${boardName}/scrumMaster/${this.props.userId}/card`,
         card,
       );
-    } else {
+    } else if(this.props.userId){
       this.props.firebase.set(
         `${boardName}/users/${this.props.userId}/card`,
         card,
@@ -46,7 +46,7 @@ class CardsContainer extends React.Component {
     } else if (theme === 'shirts') {
       CardList = Shirts;
     }
-
+    console.log("scrumid",this.props.board)
     this.scrumList = this.props.board.scrumMaster
       ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
           ...this.props.board.scrumMaster[scrumId],

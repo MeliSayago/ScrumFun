@@ -72,47 +72,47 @@ const FibonacciCards = [
 const DragonballCards = [
     {
         id: 1,
-        ki: 0,
+        points: 0,
         img: 'https://i.pinimg.com/originals/8d/80/7d/8d807d5380601d940824233818b80dca.png'
     },
     {
         id: 2,
-        ki: 2,
+        points: 2,
         img: 'https://img00.deviantart.net/37c2/i/2017/152/c/2/goku_ssj_by_koku78-dbb8ly4.png'
     },
     {
         id: 3,
-        ki: 3,
+        points: 3,
         img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/7/7e/Goku-ssj2.png/revision/latest?cb=20150523175732&path-prefix=es'
     },
     {
         id: 4,
-        ki: 4,
+        points: 4,
         img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/3/3e/Goku_SSJ3_Render.png/revision/20130708162803?path-prefix=es'
     },
     {
         id: 5,
-        ki: 5,
+        points: 5,
         img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/8/8b/Goku_SSJ_Dios_100%25_%28TC%29.png/revision/latest?cb=20170716222811&path-prefix=es'
     },
     {
         id: 6,
-        ki: 6,
+        points: 6,
         img: 'https://i.pinimg.com/originals/a8/c1/ed/a8c1ede3ae53d004579e3a3e15e001e0.png'
     },
     {
         id: 7,
-        ki: 7,
+        points: 7,
         img: 'https://pre00.deviantart.net/1729/th/pre/i/2017/119/d/c/goku_ssj_blue_kaioken__3_by_saodvd-db7k30m.png'
     },
     {
         id: 8,
-        ki: 8,
+        points: 8,
         img: 'https://t00.deviantart.net/xxnMfKPgPAHxBD7hSHgLBUPcd1M=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre00/3456/th/pre/i/2018/052/7/8/son_goku_ultra_instinto_dominado_by_jaredsongohan-dc3xh97.png'
     },
     {
         id: 9,
-        ki: 9,
+        points: 9,
         img: 'https://vignette.wikia.nocookie.net/dragonballfanon/images/6/6f/Goku_%28SSJ4%29.png/revision/latest?cb=20160619164313&path-prefix=es'
     },
 ]
@@ -188,37 +188,37 @@ const SimpsonsCards = [
 const Shirts = [
     {
         id: 1,
-        point: 1,
+        points: 1,
         size: "XS",
         img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
     },
     {
         id: 2,
-        point: 2,
+        points: 2,
         size: "S",
         img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
     },
     {
         id: 3,
-        point: 3,
+        points: 3,
         size: 'M',
         img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
     },
     {
         id: 4,
-        point: 4,
+        points: 4,
         size: 'L',
         img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
     },
     {
         id: 5,
-        point: 5,
+        points: 5,
         size: 'XL',
         img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
     },
     {
         id: 6,
-        point: 6,
+        points: 6,
         size: 'XXL',
         img: 'http://www.returnofkings.com/wp-content/uploads/2012/11/Blank_T-shirt.gif'
     },
