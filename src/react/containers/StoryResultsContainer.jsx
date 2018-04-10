@@ -105,6 +105,8 @@ export default class StoryResultsContainer extends React.Component {
         nextStory={this.nextStory}
         voteAgain={this.voteAgain}
         active={this.state.active}
+        scrumMaster={this.scrumList}
+        uid={this.props.userId}
       />
     );
   }
