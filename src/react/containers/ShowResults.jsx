@@ -37,5 +37,6 @@ export default compose(
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
+    userId: state.firebase.auth.uid,
   })),
 )(ResultsContainer);
