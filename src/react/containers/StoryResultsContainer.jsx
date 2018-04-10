@@ -36,7 +36,6 @@ export default class StoryResultsContainer extends React.Component {
           this.props.firebase.remove(`${boardName}/users/${user.id}/card`),
         ),
       )
-
       .then(() =>
         this.scrumList.forEach(user =>
           this.props.firebase.remove(
@@ -45,7 +44,10 @@ export default class StoryResultsContainer extends React.Component {
         ),
       )
       .then(() =>
-        this.props.history.push(`/${this.props.match.params.boardname}/game`),
+        this.props.firebase.set(
+          `/${this.props.match.params.boardname}/status`,
+          'voting',
+        ),
       );
   }
 
