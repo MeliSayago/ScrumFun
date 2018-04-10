@@ -10,7 +10,7 @@ class RegisterUserContainer extends Component {
     this.state = {
       name: '',
       rol: 'Developer',
-      email:''
+      email: '',
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -47,7 +47,7 @@ class RegisterUserContainer extends Component {
             this.state,
           ),
         )
-        .then(() => this.props.firebase.set(`/${boardName}/status`, 'voting'));
+        .then(() => this.props.firebase.set(`${boardName}/status`, 'voting'));
     }
     this.props.history.push(`/${boardName}/game`);
   }
