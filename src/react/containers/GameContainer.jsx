@@ -92,6 +92,9 @@ class GameContainer extends React.Component {
               <Link to={`/${currentUrl}/results`}>
                 <button className="center">Show Result</button>
               </Link>
+              <Link to={`/${currentUrl}/resultsall`}>
+                <button className="center">All results</button>
+              </Link>
             </div>
           ) : (
             <div />
