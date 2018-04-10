@@ -57,8 +57,15 @@ export default class StoryResultsContainer extends React.Component {
         `${this.props.match.params.boardname}/users/${user.id}/card`,
       ),
     );
-
-    this.props.history.push(`/${this.props.match.params.boardname}/game`);
+    this.scrumList.forEach(user =>
+      this.props.firebase.remove(
+        `${this.props.match.params.boardname}/scrumMaster/${user.id}/card`,
+      ),
+    );
+    this.props.firebase.set(
+      `/${this.props.match.params.boardname}/status`,
+      'voting',
+    );
   }
 
   render() {
