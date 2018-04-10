@@ -20,12 +20,8 @@ class ResultsContainer extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <Results {...this.props} />
-        </div>
-        <div>
-          <StoryResultContainer {...this.props} />
-        </div>
+        <Results {...this.props} />
+        <StoryResultContainer {...this.props} />
       </div>
     );
   }
