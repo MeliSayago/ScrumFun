@@ -11,6 +11,12 @@ class ResultsContainer extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.board.status === 'voting') {
+      this.props.history.push(`/${this.props.match.params.boardname}/game`);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -29,6 +35,7 @@ export default compose(
   firebaseConnect(props => [
     { path: `${props.match.params.boardname}/stories` },
     { path: `${props.match.params.boardname}/users` },
+    { path: `${props.match.params.boardname}/status` },
     { path: `${props.match.params.boardname}/scrumMaster` },
     { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
   ]),
