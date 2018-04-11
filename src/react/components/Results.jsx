@@ -11,7 +11,7 @@ export default ({ users, scrumMaster }) => (
         {users.map((user, index) => (
           <li key={index}>
             <button className="xop-box xop-img">
-              <h1>{user.card}</h1>
+              {user.card ? <img src={user.card.img} alt="" /> : ''}
             </button>
             <h5>{user.name}</h5>
           </li>
@@ -19,7 +19,7 @@ export default ({ users, scrumMaster }) => (
         {scrumMaster.map((user, index) => (
           <li key={index}>
             <button className="xop-box xop-img">
-              <h1>{user.card}</h1>
+              {user.card ? <img src={user.card.img} alt="" /> : ''}
             </button>
             <h5>{user.name}</h5>
           </li>
