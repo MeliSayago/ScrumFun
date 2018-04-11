@@ -1,80 +1,80 @@
-import React from 'react'
+import React from 'react';
 import { firebaseConnect } from 'react-redux-firebase';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { compose } from 'redux';
-import ResultsAll from '../components/ResultsAll'
-import axios from 'axios'
+import ResultsAll from '../components/ResultsAll';
+import axios from 'axios';
 
 class ResultsAllContainer extends React.Component {
-    constructor(props){
-        super(props);
+  constructor(props) {
+    super(props);
     this.sendEmail = this.sendEmail.bind(this);
     this.dropDB = this.dropDB.bind(this);
-    }
+  }
 
-    sendEmail(e){
-        const storiesList = this.props.board.stories
-        ? Object.keys(this.props.board.stories).map(storyId => ({
-        ...this.props.board.stories[storyId], 
-        id: storyId}))
-        : []
-        let text = ""
-        storiesList.map(story => {
-            text += `Story: ${story.storyName}, Card: ${story.card}.
-             `
-        })
-        const scrumMasterList = this.props.board.scrumMaster
-        ? Object.keys(this.props.board.scrumMaster).map(scrumMasterId => ({
-        ...this.props.board.scrumMaster[scrumMasterId], 
-        id: scrumMasterId}))
-        : []
-        console.log(scrumMasterList)
-        let mails = ''
-        scrumMasterList.map(scrumMaster => {
-            mails += `${scrumMaster.email}`
-        })
-        const body ={
-            mail:mails,
-            text:text
-        }
+  sendEmail(e) {
+    const storiesList = this.props.board.stories
+      ? Object.keys(this.props.board.stories).map(storyId => ({
+          ...this.props.board.stories[storyId],
+          id: storyId,
+        }))
+      : [];
+    let text = '';
+    storiesList.map(story => {
+      text += `Story: ${story.storyName}, Card: ${story.card}.
+             `;
+    });
+    const scrumMasterList = this.props.board.scrumMaster
+      ? Object.keys(this.props.board.scrumMaster).map(scrumMasterId => ({
+          ...this.props.board.scrumMaster[scrumMasterId],
+          id: scrumMasterId,
+        }))
+      : [];
 
-    axios.post('http://localhost:8080/mail',body)
-        .then(function (response) {
-            console.log("rsp",response);
-        })
-        .catch(function (error) {
-            console.log("err",error);
-        });
+    let mails = '';
+    scrumMasterList.map(scrumMaster => {
+      mails += `${scrumMaster.email}`;
+    });
+    const body = {
+      mail: mails,
+      text: text,
+    };
 
-    }
-    
-    dropDB(){
-        this.props.firebase.remove(`${this.props.match.params.boardname}`)
-    }
+    axios
+      .post('http://localhost:8080/mail', body)
+      .then(function(response) {})
+      .catch(function(error) {
+        console.log('err', error);
+      });
+  }
 
-    render(){
-        const storiesList = this.props.board.stories
-        ? Object.keys(this.props.board.stories).map(storyId => ({
-        ...this.props.board.stories[storyId], 
-        id: storyId}))
-        : []
+  dropDB() {
+    this.props.firebase.remove(`${this.props.match.params.boardname}`);
+  }
 
-        return(
-            <ResultsAll 
-            storiesList={storiesList}
-            sendEmail={this.sendEmail}
-            dropDB={this.dropDB}
-            />
-        )
-    }
+  render() {
+    const storiesList = this.props.board.stories
+      ? Object.keys(this.props.board.stories).map(storyId => ({
+          ...this.props.board.stories[storyId],
+          id: storyId,
+        }))
+      : [];
 
+    return (
+      <ResultsAll
+        storiesList={storiesList}
+        sendEmail={this.sendEmail}
+        dropDB={this.dropDB}
+      />
+    );
+  }
 }
 
 export default compose(
-    firebaseConnect(props => [
-      { path: `${props.match.params.boardname}`}, // string equivalent 'todos'
-    ]),
-    connect((state, props) => ({
-      board: state.firebase.data[props.match.params.boardname] || {},
-    })),
-  )(ResultsAllContainer);
+  firebaseConnect(props => [
+    { path: `${props.match.params.boardname}` }, // string equivalent 'todos'
+  ]),
+  connect((state, props) => ({
+    board: state.firebase.data[props.match.params.boardname] || {},
+  })),
+)(ResultsAllContainer);
