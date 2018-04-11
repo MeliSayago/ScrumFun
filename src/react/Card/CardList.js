@@ -135,7 +135,7 @@ const SimpsonsCards = [
   {
     id: 1,
     points: 0,
-    img: 'https://metrouk2.files.wordpress.com/2015/09/milhouse_van_houten.jpg',
+    img: 'https://vignette.wikia.nocookie.net/lossimpson/images/9/9d/Maggie_Simpson.png/revision/latest?cb=20100529224628&path-prefix=es',
   },
   {
     id: 2,
@@ -144,67 +144,18 @@ const SimpsonsCards = [
   },
   {
     id: 3,
-    points: 1,
-    img:
-      'https://vignette.wikia.nocookie.net/simpsons/images/a/a7/Montgomery_Burns.png/revision/latest?cb=20100602062705',
-  },
-  {
-    id: 4,
-    points: 2,
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU6prU2WvXzLGuECIJKqC2OuL88TXjmOl5ZwnxaBpGLvwRf1Z_',
-  },
-  {
-    id: 5,
-    points: 3,
-    img:
-      'https://fthmb.tqn.com/reK9khvT_c6c4XZUGtHmZXykJc8=/768x0/filters:no_upscale()/fattony-56a00a013df78cafda9fbcdb.jpg',
-  },
-  {
-    id: 6,
     points: 5,
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKeZ94V7SUWV5QJdVmPrx6Y28mM9d2y4nmpbG9ZJVwCFKMJ8y_',
-  },
-  {
-    id: 7,
-    points: 8,
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhNyJf8McMVpiBG8GK9WNBkAEdyLNNoflNJMZB2Rs4YRXIEQfmwQ',
-  },
-  {
-    id: 8,
-    points: 13,
-    img: 'https://www.gunaxin.com/wp-content/uploads/2010/03/cletus.png',
-  },
-  {
-    id: 9,
-    points: 20,
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgrpHGAdBc6JqRKcIzlb9BMI6UX6n9GPTwgS2IySufPF6EJeCfgQ',
+    img:'https://vignette.wikia.nocookie.net/lossimpson/images/6/65/Bart_Simpson.png/revision/latest?cb=20100530014756&path-prefix=es',
   },
   {
     id: 10,
     points: 40,
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu2D7ForCNsbTrSidpIqra3YkhHE4XEzNUCOPbmrl-kEr1ZHdE1w',
-  },
-  {
-    id: 11,
-    points: 100,
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3KzHDg3sifUuSjl1_lrYKMb5gNklZ5NPC9AadC-D8uuScmNS_',
-  },
-  {
-    id: 12,
-    points: '?',
-    img: 'https://i.imgur.com/qh1wmPw.gif',
+    img:'https://vignette.wikia.nocookie.net/lossimpson/images/0/0b/Marge_Simpson.png/revision/latest?cb=20090415001251&path-prefix=es',
   },
   {
     id: 13,
     points: '∞',
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ09Wlitp6eDdvWycMv-vvjky55yapcQUTeqPYI-7QwEbMFNCho3Q',
+    img:'https://vignette.wikia.nocookie.net/lossimpson/images/b/bd/Homer_Simpson.png/revision/latest?cb=20100522180809&path-prefix=es',
   },
 ];
 

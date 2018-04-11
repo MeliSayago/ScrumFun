@@ -4,17 +4,18 @@ import './SidebarUsers.css';
 import { Badge } from 'react-bootstrap';
 
 export default ({ users, currentUrl, scrumMasters }) => (
-  <div>
+  <div className="container">
+    <h3>Users:</h3>
     {users.map((user, index) => (
       <Badge className={user.card ? 'backgroundGreen' : 'nothing'} key={index}>
-        {user.name}
+       <h5>{user.name}</h5>
       </Badge>
     ))}
     <br />
-    <p>scrumMasters</p>
+    <h3>Scrum Masters:</h3>
     {scrumMasters.map((user, index) => (
       <Badge className={user.card ? 'backgroundGreen' : 'nothing'} key={index}>
-        {user.name}
+        <h5>{user.name}</h5>
       </Badge>
     ))}
   </div>
