@@ -10,6 +10,6 @@ export default class Timer extends React.Component {
     this.time = format(prop.time);
   }
   render() {
-    return <div>{this.time}</div>;
+    return <h3>{this.time}</h3>
   }
 }

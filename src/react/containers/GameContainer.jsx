@@ -9,6 +9,7 @@ import SidebarUsersContainer from './SidebarUsersContainer';
 import Sidebar from 'react-sidebar';
 import CountDown from './CountDown';
 import { Link } from 'react-router-dom';
+import './GameContainer.css'
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
@@ -97,17 +98,18 @@ console.log(this.props.board)
         onSetOpen={this.onSetSidebarOpen}
         style={{ width: '90%' }}
       >
-        <div style={{ backgroundImage: back, backgroundSize: 'cover', height: '100%'}}>
+        <div style={{ backgroundImage: back, backgroundSize: "100% 100%"}}>
           <CardsContainer {...this.props} />
           <SidebarUsersContainer {...this.props} />
           <CountDown {...this.props} />
           {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
-            <div>
+            <div className="buttons">
+            <br/>
               <Link to={`/${currentUrl}/results`}>
-                <button className="center">Show Result</button>
+                <button >Show Result</button>
               </Link>
               <Link to={`/${currentUrl}/resultsall`}>
-                <button className="center">All results</button>
+                <button >All results</button>
               </Link>
             </div>
           ) : (
