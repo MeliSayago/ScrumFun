@@ -17,60 +17,19 @@ class CardsContainer extends React.Component {
   }
 
   handleClick(card) {
-    const boardName = this.props.match.params.boardname;
+      const boardName = this.props.match.params.boardname;
 
-
-    const scrumList = this.props.board.scrumMaster
-    ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
-        ...this.props.board.scrumMaster[scrumId],
-        id: scrumId,
-      }))
-    : [];
-
-
-    
-    scrumList.map(scrumMaster => {
-      if(scrumMaster.id == this.props.userId){
+      if (this.scrumList.length && this.scrumList[0].id === this.props.userId) {
         this.props.firebase.set(
-        `${boardName}/scrumMaster/${this.props.userId}/card`,
-        card,
-      );
-      }
-    })
-    
-
-
-    const userList = this.props.board.users
-    ? Object.keys(this.props.board.users).map(userId => ({
-        ...this.props.board.users[userId],
-        id: userId,
-      }))
-    : [];
-
-
-      
-    userList.map(user => {
-      if(user.id == this.props.userId){
-  
+          `${boardName}/scrumMaster/${this.props.userId}/card`,
+          card,
+        );
+      } else if (this.props.userId) {
         this.props.firebase.set(
           `${boardName}/users/${this.props.userId}/card`,
           card,
         );
       }
-    })
-
-    // if (this.scrumList.length && this.scrumList[0].id === this.props.userId) {
-    //   this.props.firebase.set(
-    //     `${boardName}/scrumMaster/${this.props.userId}/card`,
-    //     card,
-    //   );
-    // } else if(this.props.userId){
-    //   this.props.firebase.set(
-    //     `${boardName}/users/${this.props.userId}/card`,
-    //     card,
-    //   );
-    // }
-
   }
 
   render() {
@@ -108,6 +67,7 @@ export default compose(
     { path: `${props.match.params.boardname}/users` },
     { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
     { path: `${props.match.params.boardname}` },
+    { path: `${props.match.params.boardname}/selectedStory` },
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
