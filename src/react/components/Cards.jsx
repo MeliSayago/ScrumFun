@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React from 'react'
-import './Cards.css'
-=======
 import React from 'react';
 import './Cards.css';
->>>>>>> 48c2b2223d2fb230ea6d54798cd25298208f1b74
 
 const Cards = ({ handleClick, CardList }) => (
   <div className="xop-caption">
@@ -23,8 +18,4 @@ const Cards = ({ handleClick, CardList }) => (
   </div>
 );
 
-<<<<<<< HEAD
-export default Cards
-=======
 export default Cards;
->>>>>>> 48c2b2223d2fb230ea6d54798cd25298208f1b74

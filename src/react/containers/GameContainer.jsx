@@ -121,12 +121,8 @@ export default compose(
     { path: `${props.match.params.boardname}/stories` },
     { path: `${props.match.params.boardname}/users` },
     { path: `${props.match.params.boardname}/scrumMaster` },
-<<<<<<< HEAD
-    { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
-=======
     { path: `${props.match.params.boardname}/selectedStory` },
     { path: `${props.match.params.boardname}/users/card` }, // string equivalent 'todos'
->>>>>>> 48c2b2223d2fb230ea6d54798cd25298208f1b74
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
