@@ -28,7 +28,7 @@ class ResultsAllContainer extends React.Component {
         ...this.props.board.scrumMaster[scrumMasterId], 
         id: scrumMasterId}))
         : []
-        console.log(scrumMasterList)
+
         let mails = ''
         scrumMasterList.map(scrumMaster => {
             mails += `${scrumMaster.email}`
@@ -40,10 +40,10 @@ class ResultsAllContainer extends React.Component {
 
     axios.post('http://localhost:8080/mail',body)
         .then(function (response) {
-            console.log("rsp",response);
+
         })
         .catch(function (error) {
-            console.log("err",error);
+
         });
 
     }

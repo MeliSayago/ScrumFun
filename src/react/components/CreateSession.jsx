@@ -31,25 +31,25 @@ export default ({ onChange, onSubmit, handleClick }) => (
         <h3>Choose a theme</h3>
         <div className="d-flex justify-content-center">
           <Row className="show-grid">
-            <Col>
+            <Col xs={6}>
               <div className='xop-box xop-image-1' onClick={()=>handleClick('fibonacci')}>
                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzjJHWF6sZPsoCnjERWwdqtFnrim8PcfseidDCRMyZQAVHeGo' 
                 alt='fibonacci'/>
               </div>
             </Col>
-            <Col>
+            <Col xs={6}>
               <div className='max xop-box xop-image-1' onClick={()=>handleClick('dragonBall')}>
                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSQtXj9Cmr8-21775y3LrQNOkCbJX9e8czjPTQ3pgbyg7Wkb-W' 
                 alt='dragon ball'/>
               </div>
             </Col>
-            <Col>
+            <Col xs={6}>
               <div className=' max xop-box xop-image-1' onClick={()=>handleClick('simpsons')}>
                 <img src='https://ia.media-imdb.com/images/M/MV5BYjFkMTlkYWUtZWFhNy00M2FmLThiOTYtYTRiYjVlZWYxNmJkXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UX182_CR0,0,182,268_AL_.jpg' 
                 alt="simpsons"/>
               </div>
             </Col>
-            <Col>
+            <Col xs={6}>
               <div className=' max xop-box xop-image-1' onClick={()=>handleClick('shirts')}>
                 <img src='https://www.scrumdesk.com/wp-content/uploads/XL.jpg' 
                 alt='shirts'/>

@@ -8,23 +8,27 @@ export default ({ users, scrumMaster }) => (
     <h1 className="text-center">Results</h1>
     <div className="xop-caption">
       <ul className="xop-grid">
-        {users.map((user, index) => (
-          <li key={index}>
+        {users.map((user) => (
+          <li key={user.id}>
             <button className="xop-box xop-img">
-              <h1>{user.card}</h1>
+              <img src={user.card.img} alt="card"/>
             </button>
             <h5>{user.name}</h5>
           </li>
         ))}
-        {scrumMaster.map((user, index) => (
-          <li key={index}>
+        {scrumMaster.map((sm) => (
+          <li key={sm.id}>
             <button className="xop-box xop-img">
-              <h1>{user.card}</h1>
+              <img src={sm.card.img} alt="card"/>
+              <div>
+                <h3>{sm.card.size}</h3>
+              </div>
             </button>
-            <h5>{user.name}</h5>
+            <h5>{sm.name}</h5>
           </li>
         ))}
       </ul>
     </div>
+
   </div>
 );

@@ -7,11 +7,9 @@ const Cards = ({handleClick, CardList}) => (
             {CardList.map((card) => (
                 <li key={card.points}>
                     <button className='xop-box xop-img'>
-                        <img onClick={()=>handleClick(card.points)} src={card.img} alt="DB"/>
+                        <img onClick={()=>handleClick(card)} src={card.img} alt="DB"/>
                             <div>
-                                <h1>{card.points}</h1>
                                 <h3>{card.size}</h3>
-                                <h2 className='font'>{card.points}</h2>
                             </div>
                     </button>
                 </li>

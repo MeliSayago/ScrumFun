@@ -18,18 +18,59 @@ class CardsContainer extends React.Component {
 
   handleClick(card) {
     const boardName = this.props.match.params.boardname;
+
+
+    const scrumList = this.props.board.scrumMaster
+    ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
+        ...this.props.board.scrumMaster[scrumId],
+        id: scrumId,
+      }))
+    : [];
+
+
     
-    if (this.scrumList.length && this.scrumList[0].id === this.props.userId) {
-      this.props.firebase.set(
+    scrumList.map(scrumMaster => {
+      if(scrumMaster.id == this.props.userId){
+        this.props.firebase.set(
         `${boardName}/scrumMaster/${this.props.userId}/card`,
         card,
       );
-    } else if(this.props.userId){
-      this.props.firebase.set(
-        `${boardName}/users/${this.props.userId}/card`,
-        card,
-      );
-    }
+      }
+    })
+    
+
+
+    const userList = this.props.board.users
+    ? Object.keys(this.props.board.users).map(userId => ({
+        ...this.props.board.users[userId],
+        id: userId,
+      }))
+    : [];
+
+
+      
+    userList.map(user => {
+      if(user.id == this.props.userId){
+  
+        this.props.firebase.set(
+          `${boardName}/users/${this.props.userId}/card`,
+          card,
+        );
+      }
+    })
+
+    // if (this.scrumList.length && this.scrumList[0].id === this.props.userId) {
+    //   this.props.firebase.set(
+    //     `${boardName}/scrumMaster/${this.props.userId}/card`,
+    //     card,
+    //   );
+    // } else if(this.props.userId){
+    //   this.props.firebase.set(
+    //     `${boardName}/users/${this.props.userId}/card`,
+    //     card,
+    //   );
+    // }
+
   }
 
   render() {
@@ -46,7 +87,7 @@ class CardsContainer extends React.Component {
     } else if (theme === 'shirts') {
       CardList = Shirts;
     }
-    console.log("scrumid",this.props.board)
+
     this.scrumList = this.props.board.scrumMaster
       ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
           ...this.props.board.scrumMaster[scrumId],
