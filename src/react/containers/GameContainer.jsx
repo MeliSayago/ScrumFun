@@ -1,6 +1,11 @@
 import React from 'react';
 import Results from '../components/Results';
-import { firebaseConnect, withFirebase } from 'react-redux-firebase';
+import {
+  firebaseConnect,
+  withFirebase,
+  isLoaded,
+  isEmpty,
+} from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import StoriesNavbarContainer from './StoriesNavbarContainer';
@@ -9,6 +14,7 @@ import SidebarUsersContainer from './SidebarUsersContainer';
 import Sidebar from 'react-sidebar';
 import CountDown from './CountDown';
 import { Link } from 'react-router-dom';
+import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
@@ -49,10 +55,30 @@ class GameContainer extends React.Component {
   }
 
   changeStatus() {
-    this.props.firebase.set(
-      `${this.props.match.params.boardname}/status`,
-      'storyResults',
-    );
+    var usersList = this.props.board.users
+      ? Object.keys(this.props.board.users).map(userId => ({
+          ...this.props.board.users[userId],
+          id: userId,
+        }))
+      : [];
+
+    var scrumList = this.props.board.scrumMaster
+      ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
+          ...this.props.board.scrumMaster[scrumId],
+          id: scrumId,
+        }))
+      : [];
+
+    var selectedCard = CardList([...usersList, ...scrumList]);
+
+    if (!selectedCard.length) {
+      alert('Users no pick a card');
+    } else {
+      this.props.firebase.set(
+        `${this.props.match.params.boardname}/status`,
+        'storyResults',
+      );
+    }
   }
 
   render() {

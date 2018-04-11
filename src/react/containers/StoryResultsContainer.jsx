@@ -85,6 +85,7 @@ export default class StoryResultsContainer extends React.Component {
           id: storyId,
         }))
       : [];
+
     this.usersList = this.props.board.users
       ? Object.keys(this.props.board.users).map(userId => ({
           ...this.props.board.users[userId],
