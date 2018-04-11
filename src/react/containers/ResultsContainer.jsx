@@ -4,7 +4,7 @@ import { firebaseConnect, withFirebase } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-class ResultsContainer extends React.Component {
+export default class ResultsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -28,13 +28,3 @@ class ResultsContainer extends React.Component {
     return <Results users={usersList} scrumMaster={scrumList} />;
   }
 }
-
-export default compose(
-  firebaseConnect(props => [
-    { path: `${props.match.params.boardname}/users` },
-    { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
-  ]),
-  connect((state, props) => ({
-    board: state.firebase.data[props.match.params.boardname] || {},
-  })),
-)(ResultsContainer);

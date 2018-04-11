@@ -10,6 +10,7 @@ class RegisterUserContainer extends Component {
     this.state = {
       name: '',
       rol: 'Developer',
+      email: '',
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -34,10 +35,7 @@ class RegisterUserContainer extends Component {
         .auth()
         .signInAnonymously()
         .then(data =>
-          this.props.firebase.set(
-            `/${boardName}/users/${data.uid}`,
-            this.state,
-          ),
+          this.props.firebase.set(`${boardName}/users/${data.uid}`, this.state),
         );
     } else {
       this.props.firebase
@@ -48,7 +46,8 @@ class RegisterUserContainer extends Component {
             `/${boardName}/scrumMaster/${data.uid}`,
             this.state,
           ),
-        );
+        )
+        .then(() => this.props.firebase.set(`${boardName}/status`, 'voting'));
     }
     this.props.history.push(`/${boardName}/game`);
   }
@@ -56,7 +55,6 @@ class RegisterUserContainer extends Component {
   render() {
     const copyUrl = `http://localhost:3000${this.props.location.pathname}`;
 
-    console.log('users', this.props.board.users);
     return (
       <RegisterUser
         handleClick={this.handleClick}

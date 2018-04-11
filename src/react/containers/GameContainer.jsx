@@ -22,6 +22,13 @@ class GameContainer extends React.Component {
     };
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.board.status === 'storyResults') {
+      this.props.history.push(`/${this.props.match.params.boardname}/results`);
+    }
   }
 
   onSetSidebarOpen(open) {
@@ -39,6 +46,13 @@ class GameContainer extends React.Component {
 
   mediaQueryChanged() {
     this.setState({ sidebarDocked: this.state.mql.matches });
+  }
+
+  changeStatus() {
+    this.props.firebase.set(
+      `${this.props.match.params.boardname}/status`,
+      'storyResults',
+    );
   }
 
   render() {
@@ -75,9 +89,6 @@ class GameContainer extends React.Component {
 
     const currentUrl = this.props.match.params.boardname;
 
-    console.log('user uid', this.props.userId);
-    console.log('scrum master', this.scrumList);
-
     return (
       <Sidebar
         sidebar={sidebarContent}
@@ -86,18 +97,16 @@ class GameContainer extends React.Component {
         onSetOpen={this.onSetSidebarOpen}
         style={{ width: '90%' }}
       >
-        <div style={{ backgroundImage: back, backgroundSize: '100% auto', height: '100%'}}>
+        <div style={{ backgroundImage: back, backgroundSize: 'cover', height: '100%'}}>
           <CardsContainer {...this.props} />
           <SidebarUsersContainer {...this.props} />
+          <CountDown {...this.props} />
           {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
-            [
-              <CountDown {...this.props} />,
-              <div>
-                <Link to={`/${currentUrl}/results`}>
-                  <button className="center">Show Result</button>
-                </Link>
-              </div>,
-            ]
+            <div>
+              <button className="center" onClick={this.changeStatus}>
+                Show Result
+              </button>
+            </div>
           ) : (
             <div />
           )}
@@ -111,7 +120,8 @@ export default compose(
   firebaseConnect(props => [
     { path: `${props.match.params.boardname}/stories` },
     { path: `${props.match.params.boardname}/users` },
-    { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/scrumMaster` },
+    { path: `${props.match.params.boardname}/selectedStory` }, // string equivalent 'todos'
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},

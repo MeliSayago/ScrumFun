@@ -11,7 +11,7 @@ import { compose } from 'redux';
 
 import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 
-class StoryResultsContainer extends React.Component {
+export default class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { active: true, selectedCard: '' };
@@ -44,7 +44,10 @@ class StoryResultsContainer extends React.Component {
         ),
       )
       .then(() =>
-        this.props.history.push(`/${this.props.match.params.boardname}/game`),
+        this.props.firebase.set(
+          `/${this.props.match.params.boardname}/status`,
+          'voting',
+        ),
       );
   }
 
@@ -54,8 +57,15 @@ class StoryResultsContainer extends React.Component {
         `${this.props.match.params.boardname}/users/${user.id}/card`,
       ),
     );
-
-    this.props.history.push(`/${this.props.match.params.boardname}/game`);
+    this.scrumList.forEach(user =>
+      this.props.firebase.remove(
+        `${this.props.match.params.boardname}/scrumMaster/${user.id}/card`,
+      ),
+    );
+    this.props.firebase.set(
+      `/${this.props.match.params.boardname}/status`,
+      'voting',
+    );
   }
 
   render() {
@@ -95,19 +105,9 @@ class StoryResultsContainer extends React.Component {
         nextStory={this.nextStory}
         voteAgain={this.voteAgain}
         active={this.state.active}
+        scrumMaster={this.scrumList}
+        uid={this.props.userId}
       />
     );
   }
 }
-
-export default compose(
-  firebaseConnect(props => [
-    { path: `${props.match.params.boardname}/stories` },
-    { path: `${props.match.params.boardname}/selectedStory` },
-    { path: `${props.match.params.boardname}/users` },
-    { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
-  ]),
-  connect((state, props) => ({
-    board: state.firebase.data[props.match.params.boardname] || {},
-  })),
-)(StoryResultsContainer);

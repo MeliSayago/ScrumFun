@@ -4,6 +4,10 @@
     margin: 0 auto;
 }
 
+.session-font {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .btn-signin{
     width: 50%;
     margin: 0 auto;
@@ -15,7 +19,7 @@
     padding: 6% 2%;
 }
 
-.xop-grid {
+.xop-grid-session {
     margin: 20px 0 0 0 ;
     padding: 0;
     list-style: none;
@@ -24,11 +28,11 @@
     width: 100%;
 }
 
-.xop-grid:after {
+.xop-grid-session:after {
     clear: both;
 }
 
-.xop-grid li {
+.xop-grid-session li {
     width: 75px;
     height: 90px;
     display: inline-block;
@@ -45,19 +49,312 @@
     -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
-.xop-box img{
+.xop-box-session img{
     width: 100%;
     height: 100%;
     border-radius: 20px;
 }
 
-.xop-box:hover{
+.xop-box-session:hover{
     transform: scale(1.05);
 }
 
-.xop-box:focus {
+.xop-box-session:focus {
     border-radius: 20px;
     border: 2px solid red;
     outline: none;
 }
 
+@media only screen and (min-width : 300px) and (max-width : 350px) {
+    .xop-box-session {
+        width: 150px;
+        height: 200px;
+        cursor: pointer;
+        margin: 5px;
+        position: relative;
+        left: 20px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 351px) and (max-width : 374px) {
+    .xop-box-session {
+        width: 150px;
+        height: 200px;
+        cursor: pointer;
+        margin: 5px;
+        position: relative;
+        left: 40px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 375px) and (max-width : 409px) {
+    .xop-box-session {
+        width: 150px;
+        height: 200px;
+        cursor: pointer;
+        margin: 5px;
+        position: relative;
+        left: 48px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 410px) and (max-width : 414px) {
+    .xop-box-session {
+        width: 150px;
+        height: 200px;
+        cursor: pointer;
+        margin: 5px;
+        position: relative;
+        left: 65px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 415px) and (max-width : 500px) {
+    .xop-box-session {
+        width: 270px;
+        height: 350px;
+        cursor: pointer;
+        margin: 5px;
+        position: relative;
+        left: 120px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 501px) and (max-width : 550px) {
+    .xop-box-session {
+        width: 270px;
+        height: 350px;
+        cursor: pointer;
+        margin: 5px;
+        position: relative;
+        left: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 551px) and (max-width : 700px) {
+    .xop-box-session {
+        width: 150px;
+        height: 230px;
+        cursor: pointer;
+        margin: 50px;
+        position: relative;
+        left: 50px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 701px) and (max-width : 789px) {
+    .xop-box-session {
+        width: 200px;
+        height: 230px;
+        cursor: pointer;
+        margin: 50px;
+        position: relative;
+        left: 80px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 790px) and (max-width : 1024px) {
+    .xop-box-session {
+        width: 270px;
+        height: 350px;
+        cursor: pointer;
+        margin: 50px;
+        position: relative;
+        left: 50px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 790px) and (max-width : 850px) {
+    .xop-box-session {
+        width: 270px;
+        height: 350px;
+        cursor: pointer;
+        margin: 50px;
+        position: relative;
+        left: 50px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 851px) and (max-width : 1190px) {
+    .xop-box-session {
+        width: 200px;
+        height: 230px;
+        cursor: pointer;
+        margin: 60px;
+        position: relative;
+        left: 140px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 851px) and (max-width : 940px) {
+    .xop-box-session {
+        width: 200px;
+        height: 230px;
+        cursor: pointer;
+        margin: 60px;
+        position: relative;
+        left: 140px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 941px) and (max-width : 969px) {
+    .xop-box-session {
+        width: 130px;
+        height: 210px;
+        cursor: pointer;
+        margin: 50px;
+        position: relative;
+        left: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}
+
+@media only screen and (min-width : 970px) and (max-width : 1920px) {
+    .xop-box-session {
+        width: 150px;
+        height: 230px;
+        cursor: pointer;
+        margin: 50px;
+        position: relative;
+        left: 10px;
+        padding: 5px;
+        border-radius: 10px;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+     }
+
+     .xop-grid-session li {
+        width: 50%;
+        height: 200px;
+        display: inline-block;
+        margin: 5px;
+     }
+}

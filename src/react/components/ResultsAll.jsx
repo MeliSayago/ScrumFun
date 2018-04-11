@@ -2,7 +2,8 @@ import React from 'react'
 import './ResultsAll.css'
 import { Table, ListGroupItem} from 'reactstrap';
 
-const ResultsAll = ({ storiesList }) => (
+
+const ResultsAll = ({ storiesList,sendEmail,dropDB }) => (
     <div>
         <Table responsive>
         <thead>
@@ -14,13 +15,16 @@ const ResultsAll = ({ storiesList }) => (
         <tbody>
             {storiesList.map(story => (
                 <tr>
-                <td>{story.result}</td>
+                <td>{story.card}</td>
                 <td>{story.storyName}</td>
                 </tr>
             ))}
         </tbody>
         </Table>
+    <button onClick={(e) => sendEmail(e)}>Enviar resultados</button>
+    <button onClick={dropDB}>Delete</button>
     </div>
+
 )
 
 export default ResultsAll;

@@ -8,6 +8,8 @@ export default ({
   nextStory,
   voteAgain,
   active,
+  uid,
+  scrumMaster,
 }) =>
   cardModa ? (
     <div>
@@ -26,20 +28,24 @@ export default ({
             ))}
         </ul>
       </div>
-      <ButtonToolbar>
-        <Button
-          name="nextStory"
-          id="nextStory"
-          onClick={() => nextStory(story.id)}
-          disabled={active}
-        >
-          Proxima historia
-        </Button>
+      {scrumMaster[0] && scrumMaster[0].id === uid ? (
+        <ButtonToolbar>
+          <Button
+            name="nextStory"
+            id="nextStory"
+            onClick={() => nextStory(story.id)}
+            disabled={active}
+          >
+            Proxima historia
+          </Button>
 
-        <Button name="voteAgain" onClick={() => voteAgain()}>
-          Votar de vuelta
-        </Button>
-      </ButtonToolbar>
+          <Button name="voteAgain" onClick={() => voteAgain()}>
+            Votar de vuelta
+          </Button>
+        </ButtonToolbar>
+      ) : (
+        <div />
+      )}
     </div>
   ) : (
     <div>
