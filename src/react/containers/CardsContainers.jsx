@@ -68,6 +68,7 @@ export default compose(
     { path: `${props.match.params.boardname}/scrumMaster` }, // string equivalent 'todos'
     { path: `${props.match.params.boardname}` },
     { path: `${props.match.params.boardname}/selectedStory` },
+    { path: `${props.match.params.boardname}/users/card` },
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},

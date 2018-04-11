@@ -13,6 +13,7 @@ export default ({
 }) =>
   cardModa ? (
     <div>
+      {console.log("card",cardModa)}
       <h1>{story.storyName}</h1>
       <div>
         <ul className="xop-grid">

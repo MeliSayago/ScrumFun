@@ -88,7 +88,11 @@ export default class StoryResultsContainer extends React.Component {
           id: scrumId,
         }))
       : [];
-
+    // PORQUE TRAE {card: {...}} el primer board.users ???!!
+    // console.log('KEYS', Object.keys(this.props.board.users || []));
+    // console.log('BOARD.USER', this.props.board.users);
+    // console.log('Userlist', this.usersList);
+    // console.log('scrumList', this.scrumList);
     var card = !isLoaded(this.props.board)
       ? 'Loading'
       : isEmpty(this.props.board)
