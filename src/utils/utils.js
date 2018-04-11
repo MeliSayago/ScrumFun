@@ -1,12 +1,11 @@
 export const CardList = usersList => {
-  console.log('1 - USERLIST', usersList);
   var cardsList = [];
   for (var i = 0; i < usersList.length; i++) {
     if (usersList[i].card.points) {
       cardsList.push(usersList[i].card.points);
     }
   }
-  console.log('2 - CARDLIST', cardsList);
+
   return cardsList;
 };
 
@@ -26,14 +25,10 @@ export const Moda = function(array) {
     '?': 0,
     '∞': 0,
   };
-  console.log('3 - ARRAY', array);
 
   array.forEach(element => {
-    console.log('ELEMENT', element);
     obj[element] += 1;
   });
-
-  console.log('OBJETO', obj);
 
   var max = obj[0];
   var maxKey = [];

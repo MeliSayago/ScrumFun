@@ -76,6 +76,7 @@ export default class CountDown extends React.Component {
           id: scrumId,
         }))
       : [];
+
     return (
       <div>
         <Timer time={this.props.board.timer} />

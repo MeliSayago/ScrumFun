@@ -47,7 +47,8 @@ class RegisterUserContainer extends Component {
             this.state,
           ),
         )
-        .then(() => this.props.firebase.set(`${boardName}/status`, 'voting'));
+        .then(() => this.props.firebase.set(`${boardName}/status`, 'voting'))
+        .then(() => this.props.firebase.set(`${boardName}/timer`, 0));
     }
     this.props.history.push(`/${boardName}/game`);
   }
