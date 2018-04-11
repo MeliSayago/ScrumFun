@@ -16,12 +16,12 @@ export default ({ users, scrumMaster }) => (
             <h5>{user.name}</h5>
           </li>
         ))}
-        {scrumMaster.map((sm) => (
-          <li key={sm.id}>
+        {scrumMaster.map((user) => (
+          <li key={user.id}>
             <button className="xop-box xop-img">
               {user.card ? <img src={user.card.img} alt="" /> : ''}
             </button>
-            <h5>{sm.name}</h5>
+            <h5>{user.name}</h5>
           </li>
         ))}
       </ul>
