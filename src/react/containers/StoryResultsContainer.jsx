@@ -49,6 +49,12 @@ export default class StoryResultsContainer extends React.Component {
           `/${this.props.match.params.boardname}/status`,
           'voting',
         ),
+      )
+      .then(() =>
+        this.props.firebase.set(
+          `${this.props.match.params.boardname}/timer`,
+          0,
+        ),
       );
   }
 
@@ -63,10 +69,14 @@ export default class StoryResultsContainer extends React.Component {
         `${this.props.match.params.boardname}/scrumMaster/${user.id}/card`,
       ),
     );
-    this.props.firebase.set(
-      `/${this.props.match.params.boardname}/status`,
-      'voting',
-    );
+    this.props.firebase
+      .set(`/${this.props.match.params.boardname}/status`, 'voting')
+      .then(() =>
+        this.props.firebase.set(
+          `${this.props.match.params.boardname}/timer`,
+          0,
+        ),
+      );
   }
 
   render() {
@@ -76,6 +86,7 @@ export default class StoryResultsContainer extends React.Component {
           id: storyId,
         }))
       : [];
+
     this.usersList = this.props.board.users
       ? Object.keys(this.props.board.users).map(userId => ({
           ...this.props.board.users[userId],
@@ -88,12 +99,6 @@ export default class StoryResultsContainer extends React.Component {
           id: scrumId,
         }))
       : [];
-      const theme = this.props.board.theme
-    // PORQUE TRAE {card: {...}} el primer board.users ???!!
-    // console.log('KEYS', Object.keys(this.props.board.users || []));
-    // console.log('BOARD.USER', this.props.board.users);
-    // console.log('Userlist', this.usersList);
-    // console.log('scrumList', this.scrumList);
     var card = !isLoaded(this.props.board)
       ? 'Loading'
       : isEmpty(this.props.board)
