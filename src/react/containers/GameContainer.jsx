@@ -97,7 +97,7 @@ console.log(this.props.board)
         onSetOpen={this.onSetSidebarOpen}
         style={{ width: '90%' }}
       >
-        <div style={{ backgroundImage: back, backgroundSize: '100% 100%' }}>
+        <div style={{ backgroundImage: back, backgroundSize: 'cover', height: '100%'}}>
           <CardsContainer {...this.props} />
           <SidebarUsersContainer {...this.props} />
           <CountDown {...this.props} />
