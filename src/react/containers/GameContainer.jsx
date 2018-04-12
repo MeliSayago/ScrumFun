@@ -115,7 +115,7 @@ class GameContainer extends React.Component {
       : [];
 
     const currentUrl = this.props.match.params.boardname;
-console.log(this.props.board)
+
     return (
       <Sidebar
         sidebar={sidebarContent}
