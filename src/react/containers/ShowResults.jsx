@@ -34,6 +34,7 @@ export default compose(
     { path: `${props.match.params.boardname}/status` },
     { path: `${props.match.params.boardname}/scrumMaster` },
     { path: `${props.match.params.boardname}/selectedStory` },
+    { path: `${props.match.params.boardname}/theme` },
     // string equivalent 'todos'
   ]),
   connect((state, props) => ({

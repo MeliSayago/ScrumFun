@@ -11,10 +11,12 @@ import { compose } from 'redux';
 
 import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 
+import { FibonacciCards, DragonballCards, SimpsonsCards, Shirts } from '../Card/CardList'
+
 export default class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { active: true, selectedCard: '' };
+    this.state = { active: true, selectedCard: '', resultList:[]};
     this.handleClickButton = this.handleClickButton.bind(this);
     this.nextStory = this.nextStory.bind(this);
     this.voteAgain = this.voteAgain.bind(this);
@@ -106,19 +108,41 @@ export default class StoryResultsContainer extends React.Component {
         ? undefined
         : Moda(CardList(this.usersList.concat(this.scrumList)));
 
+    const theme = this.props.board.theme
+    let resultList
+
+    switch(theme) {
+      case 'fibonacci':
+        resultList = FibonacciCards
+        break;
+      case 'dragonBall':
+        resultList = DragonballCards
+        break;
+      case 'simpsons':
+        resultList = SimpsonsCards
+        break;
+      case 'shirts':
+        resultList = Shirts
+        break;
+      }
+      
     return (
-      <StoryResults
-        story={
-          this.props.board.selectedStory ? this.props.board.selectedStory : ''
-        }
-        cardModa={card}
-        handleClickButton={this.handleClickButton}
-        nextStory={this.nextStory}
-        voteAgain={this.voteAgain}
-        active={this.state.active}
-        scrumMaster={this.scrumList}
-        uid={this.props.userId}
-      />
+      <div>
+        <StoryResults
+          story={
+            this.props.board.selectedStory ? this.props.board.selectedStory : ''
+          }
+
+          resultList={resultList}
+          cardModa={card}
+          handleClickButton={this.handleClickButton}
+          nextStory={this.nextStory}
+          voteAgain={this.voteAgain}
+          active={this.state.active}
+          scrumMaster={this.scrumList}
+          uid={this.props.userId}
+        />
+      </div>
     );
   }
 }
