@@ -18,7 +18,7 @@ app.get("/probando",function(req,res){
 })
 
 app.post('/mail',function(req,res){
-
+    console.log("llega")
     // chromium-browser --disable-web-security --user-data-dir
     enviar.sendResults(req.body.mail,req.body.text)
 })

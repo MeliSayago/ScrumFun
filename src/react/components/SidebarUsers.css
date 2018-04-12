@@ -1,5 +1,5 @@
 .backgroundGreen {
-  background-color: rgba(0, 128, 0, 0.7);
+  background-color: green;
   margin: auto;
   
 }
@@ -13,9 +13,4 @@
 .center {
   position: relative;
   left: 46%;
-}
-
-.container {
-  background-color: rgba(255,255,255,0.7);
-  border-radius: 20px;
 }
