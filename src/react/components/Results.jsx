@@ -13,7 +13,9 @@ export default ({ users, scrumMaster }) => (
             <button className="xop-box xop-img">
               {user.card ? <img src={user.card.img} alt="" /> : ''}
             </button>
-            <h5>{user.name}</h5>
+            <div>
+              <h3>{user.card.size}</h3>
+            </div>
           </li>
         ))}
         {scrumMaster.map((user, index) => (
@@ -21,7 +23,9 @@ export default ({ users, scrumMaster }) => (
             <button className="xop-box xop-img">
               {user.card ? <img src={user.card.img} alt="" /> : ''}
             </button>
-            <h5>{user.name}</h5>
+            <div>
+              <h3>{user.card.size}</h3>
+            </div>
           </li>
         ))}
       </ul>
