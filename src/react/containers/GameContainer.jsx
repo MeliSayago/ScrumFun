@@ -123,23 +123,27 @@ class GameContainer extends React.Component {
         onSetOpen={this.onSetSidebarOpen}
         style={{ width: '90%' }}
       >
-        <div style={{ backgroundImage: back, backgroundSize: "100% 100%"}}>
+        <div style={{ backgroundImage: back, backgroundSize: '100% 100%' }}>
           <CardsContainer {...this.props} />
           <div className="container">
-          <SidebarUsersContainer {...this.props} />
-          <CountDown {...this.props} />
-          <br/>
+            <SidebarUsersContainer {...this.props} />
+            <CountDown {...this.props} />
+            <br />
           </div>
-      <br/>
+          <br />
           {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
-            <div style={{textAlign:"center"}}>
-              <button type="button" class="btn btn-success" onClick={this.changeStatus}>
+            <div style={{ textAlign: 'center' }}>
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick={this.changeStatus}
+              >
                 Story Result
               </button>
-              <Link to={`${this.props.match.params.boardname}/resultsall`}>
-              <button type="button" class="btn btn-success" >
-                Board Result
-              </button>
+              <Link to={`/${this.props.match.params.boardname}/resultsall`}>
+                <button type="button" class="btn btn-success">
+                  Board Result
+                </button>
               </Link>
             </div>
           ) : (
@@ -157,7 +161,8 @@ export default compose(
     { path: `${props.match.params.boardname}/users` },
     { path: `${props.match.params.boardname}/scrumMaster` },
     { path: `${props.match.params.boardname}/selectedStory` },
-    { path: `${props.match.params.boardname}/users/card` }, // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/users/card` },
+    { path: `${props.match.params.boardname}/timer` },
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},
