@@ -134,12 +134,12 @@ const DragonballCards = [
 const SimpsonsCards = [
   {
     id: 1,
-    points: 0,
+    points: '1/2',
     img: 'https://vignette.wikia.nocookie.net/lossimpson/images/9/9d/Maggie_Simpson.png/revision/latest?cb=20100529224628&path-prefix=es',
   },
   {
     id: 2,
-    points: '1/2',
+    points: 1,
     img: 'https://thegirlwhogames.files.wordpress.com/2014/02/lisa_simpson.png',
   },
   {

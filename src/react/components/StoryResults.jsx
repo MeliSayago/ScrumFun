@@ -14,7 +14,7 @@ export default ({
 }) =>
   cardModa ? (
     <div>
-      <h1>{story.storyName}</h1>
+      <h1 className="text-center">Story name: {story.storyName}</h1>
       <div>
       <ul className="xop-grid">
         {resultList && resultList.map((user, index) => (
@@ -32,22 +32,27 @@ export default ({
           })
         ))}
       </ul>
-      </div>
+      </div >
       {scrumMaster[0] && scrumMaster[0].id === uid ? (
-        <ButtonToolbar>
-          <Button
-            name="nextStory"
-            id="nextStory"
-            onClick={() => nextStory(story.id)}
-            disabled={active}
-          >
-            Proxima historia
-          </Button>
-
-          <Button name="voteAgain" onClick={() => voteAgain()}>
-            Votar de vuelta
-          </Button>
-        </ButtonToolbar>
+        <div className="finishButton">
+          <ButtonToolbar>
+            <Button
+            className="finishButton"
+              name="nextStory"
+              id="nextStory"
+              onClick={() => nextStory(story.id)}
+              disabled={active}
+            >
+              Next Story
+            </Button>
+            <Button
+            className="finishButton"
+            name="voteAgain" 
+            onClick={() => voteAgain()}>
+              Vote Again
+            </Button>
+          </ButtonToolbar>
+         </div>
       ) : (
         <div />
       )}

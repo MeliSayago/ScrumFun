@@ -5,4 +5,7 @@
     display: block;
     width: 100%;
 }   
-
+.finishButton {
+    display: flex;
+    justify-content: center;
+}
