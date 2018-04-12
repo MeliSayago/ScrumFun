@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 export default ({
   cardModa,
   story,
@@ -11,42 +10,55 @@ export default ({
   active,
   uid,
   scrumMaster,
-  userList
+  resultList
 }) =>
-  <div>
-    {console.log("scrum",userList)}
-    <h1>{story.storyName}</h1>
+  cardModa ? (
     <div>
+      <h1 className="text-center">Story name: {story.storyName}</h1>
+      <div>
       <ul className="xop-grid">
-        {/* {cardModa &&
-          cardModa.map((card, index) => (
+        {resultList && resultList.map((user, index) => (
+          cardModa.map(card => {
+            return card == user.points ? 
             <li key={index}>
               <button className="xop-box xop-img">
-                <h1 key={index} onClick={() => handleClickButton(card)}>
-                  {card}
-                </h1>
+                <img src={user.img} alt="" onClick={() => handleClickButton(card)}/>
+                <div>
+                  <h3>{user.size}</h3>
+                </div>
               </button>
             </li>
-          ))} */}
+            :""
+          })
+        ))}
       </ul>
+      </div >
+      {scrumMaster[0] && scrumMaster[0].id === uid ? (
+        <div className="finishButton">
+          <ButtonToolbar>
+            <Button
+            className="finishButton"
+              name="nextStory"
+              id="nextStory"
+              onClick={() => nextStory(story.id)}
+              disabled={active}
+            >
+              Next Story
+            </Button>
+            <Button
+            className="finishButton"
+            name="voteAgain" 
+            onClick={() => voteAgain()}>
+              Vote Again
+            </Button>
+          </ButtonToolbar>
+         </div>
+      ) : (
+        <div />
+      )}
     </div>
-    {scrumMaster[0] && scrumMaster[0].id === uid ? (
-      <ButtonToolbar>
-        <Button
-          name="nextStory"
-          id="nextStory"
-          onClick={() => nextStory(story.id)}
-          disabled={active}
-        >
-          Proxima historia
-        </Button>
-
-        <Button name="voteAgain" onClick={() => voteAgain()}>
-          Votar de vuelta
-        </Button>
-      </ButtonToolbar>
-    ) : (
-      <div />
-    )}
-  </div>
-  
+  ) : (
+    <div>
+      <img src="" />
+    </div>
+  );

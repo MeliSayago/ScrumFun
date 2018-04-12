@@ -14,7 +14,6 @@ import SidebarUsersContainer from './SidebarUsersContainer';
 import Sidebar from 'react-sidebar';
 import CountDown from './CountDown';
 import { Link } from 'react-router-dom';
-import './GameContainer.css'
 import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 
 const mql = window.matchMedia(`(min-width: 800px)`);
@@ -124,18 +123,27 @@ class GameContainer extends React.Component {
         onSetOpen={this.onSetSidebarOpen}
         style={{ width: '90%' }}
       >
-        <div style={{ backgroundImage: back, backgroundSize: "100% 100%"}}>
+        <div style={{ backgroundImage: back, backgroundSize: '100% 100%' }}>
           <CardsContainer {...this.props} />
-          <SidebarUsersContainer {...this.props} />
-          <CountDown {...this.props} />
+          <div className="container">
+            <SidebarUsersContainer {...this.props} />
+            <CountDown {...this.props} />
+            <br />
+          </div>
+          <br />
           {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
-            <div className="buttons">
-            <br/>
-              <Link to={`/${currentUrl}/results`}>
-                <button >Show Result</button>
-              </Link>
-              <Link to={`/${currentUrl}/resultsall`}>
-                <button >All results</button>
+            <div style={{ textAlign: 'center' }}>
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick={this.changeStatus}
+              >
+                Story Result
+              </button>
+              <Link to={`/${this.props.match.params.boardname}/resultsall`}>
+                <button type="button" class="btn btn-success">
+                  Board Result
+                </button>
               </Link>
             </div>
           ) : (
@@ -154,7 +162,7 @@ export default compose(
     { path: `${props.match.params.boardname}/scrumMaster` },
     { path: `${props.match.params.boardname}/selectedStory` },
     { path: `${props.match.params.boardname}/users/card` },
-    {path: `${props.match.params.boardname}/theme`} // string equivalent 'todos'
+    { path: `${props.match.params.boardname}/timer` },
   ]),
   connect((state, props) => ({
     board: state.firebase.data[props.match.params.boardname] || {},

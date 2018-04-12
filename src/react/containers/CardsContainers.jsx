@@ -17,6 +17,7 @@ class CardsContainer extends React.Component {
   }
 
   handleClick(card) {
+    if (this.props.board.selectedStory) {
       const boardName = this.props.match.params.boardname;
 
       if (this.scrumList.length && this.scrumList[0].id === this.props.userId) {
@@ -30,6 +31,7 @@ class CardsContainer extends React.Component {
           card,
         );
       }
+    }
   }
 
   render() {

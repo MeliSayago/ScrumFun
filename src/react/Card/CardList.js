@@ -134,28 +134,31 @@ const DragonballCards = [
 const SimpsonsCards = [
   {
     id: 1,
-    points: 0,
+    points: '1/2',
     img: 'https://vignette.wikia.nocookie.net/lossimpson/images/9/9d/Maggie_Simpson.png/revision/latest?cb=20100529224628&path-prefix=es',
   },
   {
     id: 2,
-    points: '1/2',
+    points: 1,
     img: 'https://thegirlwhogames.files.wordpress.com/2014/02/lisa_simpson.png',
   },
   {
-    id: 3,
+    id: 6,
     points: 5,
-    img:'https://vignette.wikia.nocookie.net/lossimpson/images/6/65/Bart_Simpson.png/revision/latest?cb=20100530014756&path-prefix=es',
+    img:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKeZ94V7SUWV5QJdVmPrx6Y28mM9d2y4nmpbG9ZJVwCFKMJ8y_',
   },
   {
     id: 10,
     points: 40,
-    img:'https://vignette.wikia.nocookie.net/lossimpson/images/0/0b/Marge_Simpson.png/revision/latest?cb=20090415001251&path-prefix=es',
+    img:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu2D7ForCNsbTrSidpIqra3YkhHE4XEzNUCOPbmrl-kEr1ZHdE1w',
   },
   {
     id: 13,
     points: '∞',
-    img:'https://vignette.wikia.nocookie.net/lossimpson/images/b/bd/Homer_Simpson.png/revision/latest?cb=20100522180809&path-prefix=es',
+    img:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ09Wlitp6eDdvWycMv-vvjky55yapcQUTeqPYI-7QwEbMFNCho3Q',
   },
 ];
 

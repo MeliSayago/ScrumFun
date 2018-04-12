@@ -8,18 +8,19 @@ import {
 } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+
 import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
+
+import { FibonacciCards, DragonballCards, SimpsonsCards, Shirts } from '../Card/CardList'
 
 export default class StoryResultsContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { active: true, selectedCard: '' };
+    this.state = { active: true, selectedCard: '', resultList:[]};
     this.handleClickButton = this.handleClickButton.bind(this);
     this.nextStory = this.nextStory.bind(this);
     this.voteAgain = this.voteAgain.bind(this);
   }
-
-
 
   handleClickButton(card) {
     // card = Number(card);
@@ -93,30 +94,55 @@ export default class StoryResultsContainer extends React.Component {
           id: userId,
         }))
       : [];
+
     this.scrumList = this.props.board.scrumMaster
       ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
           ...this.props.board.scrumMaster[scrumId],
           id: scrumId,
         }))
       : [];
+
     var card = !isLoaded(this.props.board)
       ? 'Loading'
       : isEmpty(this.props.board)
         ? undefined
         : Moda(CardList(this.usersList.concat(this.scrumList)));
 
+    const theme = this.props.board.theme
+    let resultList
+
+    switch(theme) {
+      case 'fibonacci':
+        resultList = FibonacciCards
+        break;
+      case 'dragonBall':
+        resultList = DragonballCards
+        break;
+      case 'simpsons':
+        resultList = SimpsonsCards
+        break;
+      case 'shirts':
+        resultList = Shirts
+        break;
+      }
+      
     return (
-      <StoryResults
-        story={this.props.board.selectedStory ? this.props.board.selectedStory : ''}
-        users={this.usersList}
-        cardModa={card}
-        handleClickButton={this.handleClickButton}
-        nextStory={this.nextStory}
-        voteAgain={this.voteAgain}
-        active={this.state.active}
-        scrumMaster={this.scrumList}
-        uid={this.props.userId}
-      />
+      <div>
+        <StoryResults
+          story={
+            this.props.board.selectedStory ? this.props.board.selectedStory : ''
+          }
+
+          resultList={resultList}
+          cardModa={card}
+          handleClickButton={this.handleClickButton}
+          nextStory={this.nextStory}
+          voteAgain={this.voteAgain}
+          active={this.state.active}
+          scrumMaster={this.scrumList}
+          uid={this.props.userId}
+        />
+      </div>
     );
   }
 }
