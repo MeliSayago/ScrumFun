@@ -1,9 +1,9 @@
 import React from 'react'
 import './ResultsAll.css'
 import { Table, ListGroupItem} from 'reactstrap';
+import ReactTooltip from 'react-tooltip'
 
-
-const ResultsAll = ({ storiesList,sendEmail,dropDB }) => (
+const ResultsAll = ({ storiesList,sendEmail }) => (
     <div>
         <Table responsive>
         <thead>
@@ -21,8 +21,13 @@ const ResultsAll = ({ storiesList,sendEmail,dropDB }) => (
             ))}
         </tbody>
         </Table>
-    <button onClick={(e) => sendEmail(e)}>Enviar resultados</button>
-    <button onClick={dropDB}>Delete</button>
+        <div className="finishButton">
+        <button 
+        data-tip="Envia los resultados finales a tu mail!" 
+        className="btn btn-primary" 
+        onClick={(e) => sendEmail(e)}>Terminar sesion</button>
+        <ReactTooltip />
+        </div>
     </div>
 
 )
