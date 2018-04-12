@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./CountDown.css"
 import Timer from '../components/Timer.jsx';
 import Butons from '../components/Butons.jsx';
 import Input from '../components/Input.jsx';
