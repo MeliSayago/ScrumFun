@@ -123,15 +123,24 @@ class GameContainer extends React.Component {
         onSetOpen={this.onSetSidebarOpen}
         style={{ width: '90%' }}
       >
-        <div style={{ backgroundImage: back, backgroundSize: 'cover', height: '100%'}}>
+        <div style={{ backgroundImage: back, backgroundSize: "100% 100%"}}>
           <CardsContainer {...this.props} />
+          <div className="container">
           <SidebarUsersContainer {...this.props} />
           <CountDown {...this.props} />
+          <br/>
+          </div>
+      <br/>
           {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
-            <div>
-              <button className="center" onClick={this.changeStatus}>
-                Show Result
+            <div style={{textAlign:"center"}}>
+              <button type="button" class="btn btn-success" onClick={this.changeStatus}>
+                Story Result
               </button>
+              <Link to={`${this.props.match.params.boardname}/resultsall`}>
+              <button type="button" class="btn btn-success" >
+                Board Result
+              </button>
+              </Link>
             </div>
           ) : (
             <div />
