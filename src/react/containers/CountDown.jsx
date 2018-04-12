@@ -1,5 +1,5 @@
 import React from 'react';
-import './CountDown.css'
+import "./CountDown.css"
 import Timer from '../components/Timer.jsx';
 import Butons from '../components/Butons.jsx';
 import Input from '../components/Input.jsx';
@@ -78,10 +78,10 @@ export default class CountDown extends React.Component {
       : [];
 
     return (
-      <div className="hola">
+      <div>
         <Timer time={this.props.board.timer} />
         {this.scrumList[0] && this.props.userId === this.scrumList[0].id ? (
-          <div >
+          <div>
             <Butons
               active={this.state.active}
               toggle={this.toggle}

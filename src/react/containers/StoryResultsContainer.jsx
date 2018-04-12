@@ -8,6 +8,7 @@ import {
 } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+
 import { StoryIncompleted, CardList, Moda } from '../../utils/utils';
 
 export default class StoryResultsContainer extends React.Component {
@@ -18,8 +19,6 @@ export default class StoryResultsContainer extends React.Component {
     this.nextStory = this.nextStory.bind(this);
     this.voteAgain = this.voteAgain.bind(this);
   }
-
-
 
   handleClickButton(card) {
     // card = Number(card);
@@ -93,12 +92,14 @@ export default class StoryResultsContainer extends React.Component {
           id: userId,
         }))
       : [];
+
     this.scrumList = this.props.board.scrumMaster
       ? Object.keys(this.props.board.scrumMaster).map(scrumId => ({
           ...this.props.board.scrumMaster[scrumId],
           id: scrumId,
         }))
       : [];
+
     var card = !isLoaded(this.props.board)
       ? 'Loading'
       : isEmpty(this.props.board)
@@ -107,8 +108,9 @@ export default class StoryResultsContainer extends React.Component {
 
     return (
       <StoryResults
-        story={this.props.board.selectedStory ? this.props.board.selectedStory : ''}
-        users={this.usersList}
+        story={
+          this.props.board.selectedStory ? this.props.board.selectedStory : ''
+        }
         cardModa={card}
         handleClickButton={this.handleClickButton}
         nextStory={this.nextStory}
