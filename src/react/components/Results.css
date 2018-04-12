@@ -39,6 +39,14 @@
     font-size: 75px;
     transform: translate(-50%, -50%);
 }
+
+.xop-box h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 75px;
+    transform: translate(-50%, -50%);
+}
  
 .xop-box:hover{
     transform: scale(1.05);
