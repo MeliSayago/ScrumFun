@@ -18,8 +18,24 @@ class ResultsContainer extends React.Component {
   }
 
   render() {
+    const theme = {
+      dragonBall:
+        "url('http://images.pushsquare.com/news/2015/08/dragon_ball_xenoverse_dares_you_to_take_part_in_its_huge_online_tournament/attachment/0/original.jpg')",
+      simpsons:
+        "url('http://i.ngenespanol.com/dam/tbg/traveler/lugares/18/02/07/springfield-los-simpson-p.png.imgw.1280.1280.png')",
+      fibonacci:
+        "url('http://images.e-flux-systems.com/fibonacci-spiral-galaxy2000px.jpg,2000x2000')",
+    };
+    let back;
+    if (this.props.board.theme == 'dragonBall') {
+      back = theme.dragonBall;
+    } else if (this.props.board.theme == 'simpsons') {
+      back = theme.simpsons;
+    } else if (this.props.board.theme) {
+      back = theme.fibonacci;
+    }
     return (
-      <div>
+      <div style={{ backgroundImage: back, backgroundSize: '100% 100%' }}>
         <Results {...this.props} />
         <StoryResultContainer {...this.props} />
       </div>

@@ -9,7 +9,6 @@ class ResultsAllContainer extends React.Component {
   constructor(props) {
     super(props);
     this.sendEmail = this.sendEmail.bind(this);
-    this.dropDB = this.dropDB.bind(this);
   }
 
   sendEmail(e) {
@@ -22,7 +21,7 @@ class ResultsAllContainer extends React.Component {
     let text = '';
     storiesList.map(story => {
       text += `Story: ${story.storyName}, Card: ${story.card}.
-             `;
+      `;
     });
     const scrumMasterList = this.props.board.scrumMaster
       ? Object.keys(this.props.board.scrumMaster).map(scrumMasterId => ({
@@ -45,11 +44,10 @@ class ResultsAllContainer extends React.Component {
       .then(function(response) {})
       .catch(function(error) {
         console.log('err', error);
-      });
-  }
-
-  dropDB() {
-    this.props.firebase.remove(`${this.props.match.params.boardname}`);
+      })
+      
+      this.props.firebase.remove(`${this.props.match.params.boardname}`);    
+      
   }
 
   render() {
@@ -64,7 +62,6 @@ class ResultsAllContainer extends React.Component {
       <ResultsAll
         storiesList={storiesList}
         sendEmail={this.sendEmail}
-        dropDB={this.dropDB}
       />
     );
   }
