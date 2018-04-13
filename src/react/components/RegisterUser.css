@@ -1,0 +1,44 @@
+.auth-form {
+  max-width: 500px;
+  width: 500px;
+}
+
+.auth-form button {
+  margin-top: 25px;
+}
+
+.social-buttons {
+  color: white;
+}
+
+.background {
+  background-image: url('/images/cardwallpaper.jpg');
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.chan {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.size {
+  font-size: 150%;
+}
+
+.color {
+  color: white;
+}
+
+#titlee {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 300%;
+}
